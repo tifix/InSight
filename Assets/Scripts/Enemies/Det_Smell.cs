@@ -9,6 +9,7 @@ public class Det_Smell : Detector
     public float freshnessDetectMargin = 0.05f;
     private SphereCollider smelling_sphere;
     public SensorFiltering nose;
+    public bool isWindAffected = true;
 
     public void Start()
     {
@@ -21,7 +22,7 @@ public class Det_Smell : Detector
         if(detection_state!=det_states.detected)
         if (cur_detection > Mathf.Epsilon) cur_detection= Mathf.Lerp(cur_detection- detection_decay_rate * Time.fixedDeltaTime,0,100);
 
-        OffsetSmellByWind();
+        if (isWindAffected) OffsetSmellByWind();
         base.FixedUpdate(); //Base handles behaviour when not detecting
     }
     public override void WhenDetecting()

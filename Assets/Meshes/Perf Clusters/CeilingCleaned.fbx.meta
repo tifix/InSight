@@ -8,9 +8,9 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: MM_Terrain
-    second: {fileID: 2100000, guid: 450cf7cb2fdfbf54097b0d75bc1cb5ff, type: 2}
+    second: {fileID: 6496427208159926966, guid: 705369c73f0b3ce48921274d66c3259f, type: 3}
   materials:
-    materialImportMode: 2
+    materialImportMode: 0
     materialName: 0
     materialSearch: 1
     materialLocation: 1

@@ -37,7 +37,9 @@ public class Player : MonoBehaviour
         public float cur_Detection;
         public List<Detector> current_detectors = new();
 
-        [Tooltip("current detection multipliers")] [Range(0, 4)] 
+        [Tooltip("current detection multipliers")]
+        [Range(0, 4)]
+        public float mulGlobal = 1;
         public float mulVisualCur = 1, mulAudioCur = 1, mulSmellCur = 1;                            //current detection multipliers
         public float mulVisualRun = 2f, mulVisualSneak = 0.3f;                                      //when running, detect faster, when sneaking - slower
         public float mulAudioStill = 0.2f, mulAudioSneak = 1f, mulAudioRun = 3.5f;                  //when running, detect faster, when sneaking- slower, when still- just barely
@@ -109,39 +111,39 @@ public class Player : MonoBehaviour
         {
         case Move_mode.still:
             {
-                pDetection.mulAudioCur = pDetection.mulAudioStill;
-                pDetection.intervalTrackSpawning = 1;
+                pDetection.mulAudioCur = pDetection.mulAudioStill * pDetection.mulGlobal;
+                pDetection.intervalTrackSpawning = 1/pDetection.mulGlobal;
                 break;
             }
         case Move_mode.sneaking:
             {
-                pDetection.mulVisualCur = pDetection.mulVisualSneak;
-                pDetection.mulAudioCur = pDetection.mulAudioSneak;
-                pDetection.intervalTrackSpawning = 1f;
+                pDetection.mulVisualCur = pDetection.mulVisualSneak * pDetection.mulGlobal;
+                pDetection.mulAudioCur = pDetection.mulAudioSneak * pDetection.mulGlobal;
+                pDetection.intervalTrackSpawning = 1/ pDetection.mulGlobal;
                 break;
             }
         case Move_mode.walking:
             {
-                pDetection.mulVisualCur = 1;    
-                pDetection.mulAudioCur = 2f;
-                    if(ground_sensor.detectingWater) pDetection.mulAudioCur *= 2f;
-                pDetection.intervalTrackSpawning = 0.5f;
+                pDetection.mulVisualCur = 1 * pDetection.mulGlobal;    
+                pDetection.mulAudioCur = 2f * pDetection.mulGlobal;
+                    if(ground_sensor.detectingWater) pDetection.mulAudioCur *= 2f * pDetection.mulGlobal;
+                pDetection.intervalTrackSpawning = 0.5f / pDetection.mulGlobal;
                 break;
             }
         case Move_mode.running:
             {
-                pDetection.mulVisualCur = pDetection.mulVisualRun;
-                pDetection.mulAudioCur = pDetection.mulAudioRun;
-                    if (ground_sensor.detectingWater) pDetection.mulAudioCur *= 2;
-                pDetection.intervalTrackSpawning = 0.25f;
+                pDetection.mulVisualCur = pDetection.mulVisualRun * pDetection.mulGlobal;
+                pDetection.mulAudioCur = pDetection.mulAudioRun * pDetection.mulGlobal;
+                    if (ground_sensor.detectingWater) pDetection.mulAudioCur *= 2 * pDetection.mulGlobal;
+                pDetection.intervalTrackSpawning = 0.25f / pDetection.mulGlobal;
                 break;
             }
         default:
             {
                 //passively return to  walking multiplier
-                pDetection.mulVisualCur = 1;
-                pDetection.mulAudioCur = 2.5f;
-                pDetection.intervalTrackSpawning = 0.5f;
+                pDetection.mulVisualCur = 1 * pDetection.mulGlobal;
+                pDetection.mulAudioCur = 2.5f * pDetection.mulGlobal;
+                pDetection.intervalTrackSpawning = 0.5f / pDetection.mulGlobal;
                 break;
             }   
         }    

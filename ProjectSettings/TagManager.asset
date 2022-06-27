@@ -9,6 +9,7 @@ TagManager:
   - Water
   - Smell
   - Objective
+  - FallingRocks
   layers:
   - Default
   - TransparentFX

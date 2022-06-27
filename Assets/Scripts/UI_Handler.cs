@@ -6,11 +6,10 @@ using UnityEngine.UI;
 
 public class UI_Handler : MonoBehaviour
 {
-    public GameObject UI_pause;
-    public GameObject UI_main;
-    public GameObject UI_settings;
+    public GameObject UI_pause, UI_main,UI_cheats,UI_Victory; //UI_settings
 
     public Text counterDetection, counterKills, counterObjectives;
+    public Text counterVictoryDetection, counterVictoryTime, counterVictoryObjectives;
     public Slider detection_a, detection_b, volume;
     public AudioMixer audioMixer;
     public static UI_Handler instance;
@@ -21,6 +20,8 @@ public class UI_Handler : MonoBehaviour
 
     void Start()
     {
+        if (UI_pause.activeInHierarchy) UI_pause.SetActive(false);//DataHolder.instance.TogglePause();
+
         SetDetectionColorSus();
         if (instance == null) instance = this;
         else Destroy(gameObject);
@@ -51,6 +52,7 @@ public class UI_Handler : MonoBehaviour
 
     public void RefreshDisplays() 
     {
+        ToggleCheatsDisplay(DevTools.instance.devToolsEnabled);
         counterDetection.text =DataHolder.instance.cur_data.totalDetections.ToString();
         counterKills.text =DataHolder.instance.cur_data.totalKills.ToString();
         counterObjectives.text =DataHolder.instance.cur_data.totalObjectives.ToString();
@@ -65,16 +67,25 @@ public class UI_Handler : MonoBehaviour
         UI_main.SetActive(!UI_main.activeInHierarchy);
         UI_pause.SetActive(!UI_pause.activeInHierarchy);
     }
+    public void ToggleCheatsDisplay(bool tarState) => UI_cheats.SetActive(tarState);
+    
 
     public void ToggleSettings()
     {
         UI_pause.SetActive(!UI_pause.activeInHierarchy);
-        UI_settings.SetActive(!UI_settings.activeInHierarchy);
+        //UI_settings.SetActive(!UI_settings.activeInHierarchy);
     }
 
     public void SetVolume(float volume) 
     {
         audioMixer.SetFloat("volumeMaster", volume);
+    }
+    public void ShowVictoryScreen() 
+    {
+        UI_Victory.SetActive(true);
+        counterVictoryObjectives.text = DataHolder.instance.cur_data.totalObjectives.ToString();
+        counterVictoryDetection.text = DataHolder.instance.cur_data.totalDetections.ToString();
+        counterVictoryTime.text = DataHolder.instance.cur_data.totalGameTime.ToString();
     }
 
 }
