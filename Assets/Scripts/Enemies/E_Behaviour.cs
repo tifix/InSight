@@ -6,7 +6,6 @@ using UnityEngine;
 //[System.Serializable]
 public class E_Behaviour : MonoBehaviour
 {
-    //public enum behaviourType {walk,look,patrol,D,E };
     [Header("general behaviour parameters")]
     public bool is_performing = false;
     public EnemyCore.enemy_state parent_state;

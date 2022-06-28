@@ -24,7 +24,7 @@ public class E_FollowScent : E_Behaviour
         }
 
         enemy_core.detector.agent.SetDestination(freshest_track.transform.position);
-        float det_increase = (1f - freshest_track.perc_passed) * enemy_core.detector.detection_gain_rate * Player.instance.pDetection.mulSmellCur;    
+        float det_increase = (1f - freshest_track.perc_passed) * enemy_core.detector.detGain * Player.instance.pDetection.mulSmellCur;    
         Debug.Log(det_increase);
         enemy_core.detector.cur_detection = Mathf.Clamp(enemy_core.detector.cur_detection + det_increase, 0, 100);
     }

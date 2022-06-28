@@ -171,13 +171,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bab9b6582018d4a49ad71406992c320f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detector: {fileID: 447618522802924436}
+  cur_state: 0
   Behaviours:
   - {fileID: 6189735537611130451}
   - {fileID: 1292527337754144004}
   - {fileID: 3509230090094509030}
   - {fileID: 1470923305623777443}
-  cur_state: 0
+  detector: {fileID: 447618522802924436}
 --- !u!114 &447618522802924436
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -190,24 +190,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bbdead61ec3b4341a81d0b49962c74b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pl_detected:
+  StartSuspecting:
     m_PersistentCalls:
       m_Calls: []
-  pl_start_tracking:
+  NowDetected:
     m_PersistentCalls:
       m_Calls: []
-  pl_end_tracking:
+  StartTracking:
+    m_PersistentCalls:
+      m_Calls: []
+  GiveUpTracking:
+    m_PersistentCalls:
+      m_Calls: []
+  KillInRange:
     m_PersistentCalls:
       m_Calls: []
   detection_state: 0
   cur_detection: 0
   remaining_tracking_time: 0
   detectionSource: {fileID: 3398321874349481758}
-  detection_to_sound_alarn: 100
-  detection_decay_rate: 20
-  detection_gain_rate: 35
-  detection_tracked_gain_rate: 50
+  detDecay: 20
+  detGain: 25
+  detGainTracked: 40
   tracking_time: 10
+  contactDamageRange: 2
   last_player_location: {x: 0, y: 0, z: 0}
   agent: {fileID: 1004317174428437516}
   vision_cone: {fileID: 7335820918589780135}
@@ -350,6 +356,7 @@ MonoBehaviour:
   parent_state: 1
   base_interval: 1
   interval_randomness: 0.3
+  speedMultiplier: 1
 --- !u!114 &1470923305623777443
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -363,9 +370,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   is_performing: 0
-  parent_state: 2
+  parent_state: 3
   base_interval: 0.25
   interval_randomness: 0
+  speedMultiplier: 1
 --- !u!1 &6796456459567024398
 GameObject:
   m_ObjectHideFlags: 0

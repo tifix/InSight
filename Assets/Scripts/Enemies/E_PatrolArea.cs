@@ -10,8 +10,6 @@ public class E_PatrolArea : E_Behaviour
     [SerializeField] private NavMeshAgent agent;
     [SerializeField] private Vector3 destination;
 
-   
-
     public override void LoopedAction() => DeterminePatrolDestination();
 
 

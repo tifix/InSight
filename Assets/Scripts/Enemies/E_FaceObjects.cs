@@ -5,10 +5,13 @@ using UnityEngine;
 public class E_FaceObjects : E_Behaviour
 {
     public float rotDuration = 0.25f;
+    public GameObject target;
+    public bool autoTargetAudio = false;
 
     public override void LoopedAction() 
     {
-        enemy_core.StartCoroutine(LookAtObject(enemy_core.gameObject.GetComponent<Det_Audio>().RefreshAudioEntities()));
+        if (autoTargetAudio) enemy_core.StartCoroutine(LookAtObject(enemy_core.gameObject.GetComponent<Det_Audio>().RefreshAudioEntities()));
+        else enemy_core.StartCoroutine(LookAtObject(Player.instance.gameObject));
     }
     public IEnumerator LookAtObject(GameObject GO)
     {

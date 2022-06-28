@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class Det_Audio : Detector
 {
-    public Sensor ears;
+    [Tooltip("Sensor triggered by player")] public  Sensor ears;
     [Header("Hearing specific parameters")]
-
-    [SerializeField] private float distancePlayer;
-    public float player_noise=2;
-    public List<AudioEntity> AudioEntities;
-
-    public float hearing_radius = 12.5f;
-    private SphereCollider hearing_sphere;
+    [SerializeField]                        private float distancePlayer;
+                                            public  float player_noise=2;
+                                            public  List<AudioEntity> AudioEntities;
+                                            public  float hearing_radius = 12.5f;
+                                            private SphereCollider hearing_sphere;
 
     [System.Serializable]
     public class AudioEntity
@@ -23,8 +21,9 @@ public class Det_Audio : Detector
     }
 
 
-    public void Start()
+    protected override void Start()
     {
+        base.Start();
         hearing_sphere = ears.gameObject.GetComponent<SphereCollider>();
         hearing_sphere.radius = hearing_radius;
 
@@ -51,8 +50,7 @@ public class Det_Audio : Detector
         return AudioEntities[0].AudioObject.gameObject;
     }
 
-    #region ambient noise detection
-
+    // ambient noise detection
     private int SortByNoise(AudioEntity s1, AudioEntity s2)
     {
         // if (s1.AudioObject.gameObject.TryGetComponent<AudioSource>(out AudioSource source1))
@@ -74,7 +72,6 @@ public class Det_Audio : Detector
         //Debug.Log("Sorting by audio contains a an object without an audio source!");
         //return 0;// s2.name.Length.CompareTo(s1.name.Length);    //if 
     }
-    #endregion
 
     public void ListenToPlayerSteps() 
     {
@@ -84,7 +81,7 @@ public class Det_Audio : Detector
                 if (RefreshAudioEntities().CompareTag("Player")) 
                 {
                     detection_state = det_states.suspected;
-                    cur_detection += AudioEntities[0].volumeRelative * Time.fixedDeltaTime * detection_gain_rate;
+                    cur_detection += AudioEntities[0].volumeRelative * Time.fixedDeltaTime * detGain;
                 }
             }
 
@@ -98,7 +95,7 @@ public class Det_Audio : Detector
                 if (item.AudioObject.CompareTag("Player")) PlayerNoiseCur = item.volumeRelative;
             }
             
-            cur_detection += PlayerNoiseCur * Time.fixedDeltaTime * detection_gain_rate;
+            cur_detection += PlayerNoiseCur * Time.fixedDeltaTime * detGain;
             
         }
 
@@ -106,21 +103,22 @@ public class Det_Audio : Detector
 
     public override void WhenDetecting()
     {
+        base.WhenDetecting();
         /*Detection buildup in ListenToPlayerSteps
          */
 
         //upon reaching detection threshhold - set status to detecting
-        if (detection_state != det_states.detected && cur_detection > detection_to_sound_alarn)
+        if (detection_state != det_states.detected && cur_detection > detToSpot)
         {
             Debug.LogWarning("Intruder!");
-            pl_detected.Invoke();
+            NowDetected.Invoke();
             UI_Handler.instance.SetDetectionColorDet();
             DataHolder.instance.AddDetection();
             detection_state = det_states.detected;
         }
 
         //last known location updating when player is detected
-        if((detection_state==det_states.detected || detection_state==det_states.tracked)&& cur_detection>detection_to_sound_alarn) last_player_location = Player.instance.transform.position;   
+        if((detection_state==det_states.detected || detection_state==det_states.tracked)&& cur_detection>detToSpot) lastPlayerLocation = Player.instance.transform.position;   
     }
 
     //returns true if player is in cone of vision and not behind cover, otherwise returns false.

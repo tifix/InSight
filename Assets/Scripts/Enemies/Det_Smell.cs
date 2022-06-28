@@ -5,14 +5,17 @@ using UnityEngine;
 public class Det_Smell : Detector
 {
     [Header("Smell specific params")]
-    public float smelling_radius = 7f;
-    public float freshnessDetectMargin = 0.05f;
-    private SphereCollider smelling_sphere;
-    public SensorFiltering nose;
-    public bool isWindAffected = true;
+                                                            public float            smelling_radius = 7f;
+                                                            public float            freshnessDetectMargin = 0.05f;
+                                                                   SphereCollider   smelling_sphere;
+    [Tooltip("Sensor triggered by player")]                 public SensorFiltering  nose;
+    [Tooltip("Should detection range be offset by wind?")]  public bool             isWindAffected = true;
 
-    public void Start()
+
+    #region monobehaviourintegrations
+    protected override void Start()
     {
+        base.Start();
         smelling_sphere = nose.gameObject.GetComponent<SphereCollider>();
         smelling_sphere.radius = smelling_radius;
     }
@@ -20,41 +23,15 @@ public class Det_Smell : Detector
     public override void FixedUpdate()
     {
         if(detection_state!=det_states.detected)
-        if (cur_detection > Mathf.Epsilon) cur_detection= Mathf.Lerp(cur_detection- detection_decay_rate * Time.fixedDeltaTime,0,100);
+        if (cur_detection > Mathf.Epsilon) cur_detection= Mathf.Lerp(cur_detection- detDecay * Time.fixedDeltaTime,0,100);
 
         if (isWindAffected) OffsetSmellByWind();
         base.FixedUpdate(); //Base handles behaviour when not detecting
     }
-    public override void WhenDetecting()
-    {
-        if (detection_state == det_states.undetected || detection_state == det_states.suspected)
-        {
-            if (nose.allDetected[0] != null) 
-            {
-            detection_state = det_states.tracked;
-            GetComponent<EnemyCore>().SwitchToTracking();
-            }
+    #endregion
 
-        }
-        
-        //upon reaching detection threshhold - set status to detecting
-        if (detection_state != det_states.detected && cur_detection >= detection_to_sound_alarn)
-        {
-            Debug.LogWarning("Intruder!");
-            pl_detected.Invoke();
-            UI_Handler.instance.SetDetectionColorDet();
-            DataHolder.instance.AddDetection();
-            detection_state = det_states.detected;
-        }
-        
 
-        //last known location updating when player is seen
-        if ((detection_state == det_states.detected || detection_state == det_states.tracked) && cur_detection > detection_to_sound_alarn) 
-            last_player_location = Player.instance.transform.position;
-        
-    }
-
-    public override bool CheckIfDetecting()   
+    public override bool CheckIfDetecting()
     {
         if (nose.detecting)    //&& detection_state != det_states.detected
         {
@@ -81,6 +58,35 @@ public class Det_Smell : Detector
         }
         //else return true;
     }
+    public override void WhenDetecting()
+    {
+        if (detection_state == det_states.undetected || detection_state == det_states.suspected)
+        {
+            if (nose.allDetected[0] != null) 
+            {
+            detection_state = det_states.tracked;
+            GetComponent<EnemyCore>().SwitchToTracking();
+            }
+
+        }
+        
+        //upon reaching detection threshhold - set status to detecting
+        if (detection_state != det_states.detected && cur_detection >= detToSpot)
+        {
+            Debug.LogWarning("Intruder!");
+            NowDetected.Invoke();
+            UI_Handler.instance.SetDetectionColorDet();
+            DataHolder.instance.AddDetection();
+            detection_state = det_states.detected;
+        }
+        
+
+        //last known location updating when player is seen
+        if ((detection_state == det_states.detected || detection_state == det_states.tracked) && cur_detection > detToSpot) 
+            lastPlayerLocation = Player.instance.transform.position;
+        
+    }
+
 
 
 

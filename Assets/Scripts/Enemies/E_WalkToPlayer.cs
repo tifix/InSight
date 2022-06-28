@@ -6,6 +6,7 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class E_WalkToPlayer : E_Behaviour
 {
+    public float speedMultiplier=1;
     /*
     public const behaviourType type = behaviourType.walk;
 
@@ -19,6 +20,6 @@ public class E_WalkToPlayer : E_Behaviour
 
     void WalkToPlayerPos() 
     {
-        enemy_core.detector.agent.SetDestination(enemy_core.detector.last_player_location);
+        enemy_core.detector.agent.SetDestination(enemy_core.detector.lastPlayerLocation);
     }
 }

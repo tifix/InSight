@@ -128,11 +128,12 @@ GameObject:
   - component: {fileID: 4861679676943615958}
   - component: {fileID: 6242412414777524164}
   - component: {fileID: 455543117230177637}
-  - component: {fileID: 536896112000413157}
   - component: {fileID: 6792620685566752570}
   - component: {fileID: 1895344641852595309}
   - component: {fileID: 8951776002784693601}
   - component: {fileID: 1881801471868555647}
+  - component: {fileID: 5032549507106532145}
+  - component: {fileID: 911766026311542220}
   m_Layer: 0
   m_Name: EnemyMovingElements
   m_TagString: Untagged
@@ -169,13 +170,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bab9b6582018d4a49ad71406992c320f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detector: {fileID: 6242412414777524164}
+  cur_state: 0
   Behaviours:
   - {fileID: 6792620685566752570}
   - {fileID: 1895344641852595309}
   - {fileID: 8951776002784693601}
   - {fileID: 1881801471868555647}
-  cur_state: 0
+  detector: {fileID: 6242412414777524164}
 --- !u!114 &6242412414777524164
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -188,25 +189,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f07000e142e675347a2ca8992408ec96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pl_detected:
+  StartSuspecting:
     m_PersistentCalls:
       m_Calls: []
-  pl_start_tracking:
+  NowDetected:
     m_PersistentCalls:
       m_Calls: []
-  pl_end_tracking:
+  StartTracking:
+    m_PersistentCalls:
+      m_Calls: []
+  GiveUpTracking:
+    m_PersistentCalls:
+      m_Calls: []
+  KillInRange:
     m_PersistentCalls:
       m_Calls: []
   detection_state: 0
   cur_detection: 0
-  remaining_tracking_time: 0
+  remainingTrackingTime: 0
   detectionSource: {fileID: 6091120415608226174}
-  detection_to_sound_alarn: 100
-  detection_decay_rate: 30
-  detection_gain_rate: 250
-  detection_tracked_gain_rate: 40
-  tracking_time: 10
-  last_player_location: {x: 0, y: 0, z: 0}
+  detDecay: 20
+  detGain: 25
+  detGainTracked: 40
+  trackingTime: 10
+  contactDamageRange: 2.5
+  lastPlayerLocation: {x: 0, y: 0, z: 0}
   agent: {fileID: 455543117230177637}
   ears: {fileID: 7956863736053825998}
   distancePlayer: 0
@@ -235,19 +242,6 @@ NavMeshAgent:
   m_BaseOffset: 1.6
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!135 &536896112000413157
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6287842383671308758}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: -1, z: 0}
 --- !u!114 &6792620685566752570
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -352,6 +346,7 @@ MonoBehaviour:
   parent_state: 1
   base_interval: 1
   interval_randomness: 0.3
+  speedMultiplier: 1
 --- !u!114 &1881801471868555647
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -365,9 +360,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   is_performing: 0
-  parent_state: 2
+  parent_state: 3
   base_interval: 0.25
   interval_randomness: 0
+  speedMultiplier: 1.5
+--- !u!114 &5032549507106532145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6287842383671308758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e56e5448703c5f247afb89c0f9574980, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  is_performing: 0
+  parent_state: 0
+  base_interval: 2
+  interval_randomness: 1
+  rotDuration: 0.25
+--- !u!114 &911766026311542220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6287842383671308758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9707e65f3448df45a5cd646c5733185, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6899027087244208641
 GameObject:
   m_ObjectHideFlags: 0

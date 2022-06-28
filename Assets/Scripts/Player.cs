@@ -63,8 +63,11 @@ public class Player : MonoBehaviour
     public Transform last_checkpoint;
     [SerializeField] private Transform mesh_child;
     [SerializeField] private Transform head_child;
+                      public ParticleSystem VFX_DetectFlash;
+    [SerializeField] private ParticleSystem VFX_DeathFlash;
     public static Player instance;
 
+    #region monobehaviour integrations
 
     private void Awake()
     {
@@ -102,9 +105,10 @@ public class Player : MonoBehaviour
         CheckIfFallen();
     }
 
+    #endregion
 
     #region movement essentials
-    
+
     void ApplyMoveModes() //applying sneak and run and walk and idle state effects
     {
         switch (current_movement)
@@ -286,11 +290,8 @@ public class Player : MonoBehaviour
     {
         if (transform.position.y < -35) FallOffEdge();
     }
-    public void FallOffEdge() 
-    {
-        transform.position = DataHolder.instance.cur_data.lastCheckpoint.transform.position;
-    }
-
+    public void FallOffEdge() => Die(" falling off the edge");
+   
 
     private void UpdateDetectionWarning() 
     {
@@ -300,6 +301,19 @@ public class Player : MonoBehaviour
         //rotate the relative direction, from forward/backward to up/down
         //display detector direction
     }
+
+    //
+    //
+    //
+    public void Die(string context) 
+    {
+        VFX_DeathFlash.Play();
+        transform.position = DataHolder.instance.cur_data.lastCheckpoint.transform.position;
+        Debug.LogWarning("You died from: "+context);
+    }
+    //
+    //
+    //
 
     public void ShortcutDHTogglePause() => DataHolder.instance.TogglePause();
     public void ShortcutDHLoadMenu(int scene) => DataHolder.instance.SceneLoad(scene);
