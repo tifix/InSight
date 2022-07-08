@@ -12,7 +12,7 @@ public class EnemyCore : MonoBehaviour
     [Space]
     [HideInInspector]                                           public Detector         detector;
     [Tooltip("base movement speed, increased when tracking")]   public readonly float   moveSpeed = 3.5f;
-                                                                public enum enemy_state {idle, suspicious, flashDetected,tracking, attacking};
+                                                                public enum enemy_state {idle, suspicious, flashDetected,tracking, attacking, unloaded};
 
     #region monobehaviour integrations
     private void Awake()
@@ -29,21 +29,46 @@ public class EnemyCore : MonoBehaviour
         detector.NowDetected.AddListener(SwitchToDetecting);
         detector.StartTracking.AddListener(SwitchToTracking);
         detector.GiveUpTracking.AddListener(SwitchToIdle);      detector.KillInRange.AddListener(SwitchToAttacking);
+        detector.GiveUpTracking.AddListener(EndEngaging); 
+        //StartCoroutine(UnloadIfVeryFar(200f, 1f));
     }
+
+    private IEnumerator UnloadIfVeryFar(float distance, float interval) 
+    {
+        while (true) 
+        {
+            yield return new WaitForSecondsRealtime(interval);
+            if (detector.distancePlayer > distance) { SwitchToUnloaded(); }
+        }
+    }
+
     #endregion
 
+    //currentlyEngaging
+    //detector.detection_state!=Detector.det_states.detected
+
     //Detection happens HERE!
-    public void TriggerDetection() => StartCoroutine(DetectedToTracked(detector.detShockLength));
+    public void TriggerDetection() { if(!detector.currentlyEngaging) StartCoroutine(DetectedToTracked(detector.detShockLength)); }
     private IEnumerator DetectedToTracked(float shockPeriod)
     {
-        Player.instance.VFX_DetectFlash.Play();
+        detector.currentlyEngaging = true;
         detector.detection_state = Detector.det_states.detected;
+        Debug.LogWarning("Detected!");
+        yield return null;
+        Player.instance.VFX_DetectFlash.Play();
         cur_state = enemy_state.flashDetected;
         yield return new WaitForSeconds(shockPeriod);
         detector.detection_state = Detector.det_states.tracked;
         cur_state = enemy_state.tracking;
+        yield return null;
     }
 
+    public void EndEngaging() 
+    {
+        detector.currentlyEngaging = false;
+        detector.cur_detection = 0;
+        SwitchToIdle();
+    }
 
     void SwitchState(enemy_state target_state)
     {
@@ -64,7 +89,7 @@ public class EnemyCore : MonoBehaviour
     public void SwitchToDetecting() => SwitchState(enemy_state.flashDetected);
     public void SwitchToTracking() => SwitchState(enemy_state.tracking);
     public void SwitchToAttacking() => Player.instance.Die("getting gutted by " + name);  //=>SwitchState(enemy_state.attacking);
-    
+    public void SwitchToUnloaded() => SwitchState(enemy_state.unloaded);
     #endregion
 
 }

@@ -15,32 +15,33 @@ public class Detector : MonoBehaviour
     /// 
     /// </summary>
 
+    //Event triggers for state switching
     [HideInInspector] public UnityEvent StartSuspecting = new UnityEvent();
     [HideInInspector] public UnityEvent NowDetected     = new UnityEvent();
     [HideInInspector] public UnityEvent StartTracking   = new UnityEvent();
     [HideInInspector] public UnityEvent GiveUpTracking  = new UnityEvent();
     [HideInInspector] public UnityEvent KillInRange     = new UnityEvent();
 
+    //Detection essentials
                       public det_states detection_state = det_states.undetected;
                       public float      cur_detection, remainingTrackingTime;
+                      public float      distancePlayer;
     [SerializeField]         Transform  detectionSource;
+    
+    [Space][Header("Balancing parameters")]
+    public          float detDecay       = 20;
+    public          float detGain        = 25;
+    public          float detGainTracked = 40;
+    public readonly float detToSpot      = 100;
     [Space]
-    [Header("Balancing parameters")]
-    public float detDecay = 20;
-    public float detGain = 25;
-    public float detGainTracked = 40;
-    public readonly float detToSpot = 100;
-    [Space]
-    [Tooltip("Time between enemy fully spotting the player and them engaging")]         public readonly float detShockLength = 0.5f;
+    //
+    [Tooltip("Time between enemy fully spotting the player and them engaging")]         public readonly float detShockLength = 0.5f;  //= 0.5f;
+    [Tooltip("Safety check to ensure only 1 detection happens in a short timespan")]    public          bool currentlyEngaging { get; set; } = false;
     [Tooltip("time spent lookin after player is no longer detected")]                   public          float trackingTime = 10;
     
 
-    
     [Tooltip("the last known position of the player")]                                  public          Vector3 lastPlayerLocation;
-
     public enum det_states {undetected,suspected, detected, tracked}
-
-    [Header("Connected objects")]
     [HideInInspector] public NavMeshAgent agent;
 
     #region monobehaviour integrations
@@ -52,6 +53,8 @@ public class Detector : MonoBehaviour
 
     public virtual void FixedUpdate()
     {
+        cur_detection = Mathf.Clamp(cur_detection, 0, 100);
+
         //if player is not currently sensed
         if (CheckIfDetecting()) WhenDetecting();
         else WhenNotDetecting();                 
@@ -64,15 +67,15 @@ public class Detector : MonoBehaviour
             Color debug = Color.Lerp(Color.yellow, Color.red, cur_detection / 100f);
             Gizmos.color = debug;
             Gizmos.DrawCube(transform.position, Vector3.one * 0.5f);
-            Gizmos.DrawCube(lastPlayerLocation, Vector3.one * 0.5f);
-            Gizmos.DrawLine(transform.position, lastPlayerLocation);
+            Gizmos.DrawCube(Player.instance.transform.position, Vector3.one * 0.5f);
+            Gizmos.DrawLine(transform.position, Player.instance.transform.position);
         }
         if (detection_state == det_states.tracked)
         {
             Gizmos.color = Color.black;
             Gizmos.DrawCube(transform.position, Vector3.one * 0.5f);
-            Gizmos.DrawCube(lastPlayerLocation, Vector3.one * 0.5f);
-            Gizmos.DrawLine(transform.position, lastPlayerLocation);
+            Gizmos.DrawCube(Player.instance.transform.position, Vector3.one * 0.5f);
+            Gizmos.DrawLine(transform.position, Player.instance.transform.position);
         }
         //if(detection_state==det_states.suspected || detection_state == det_states.tracked)
     }
@@ -111,9 +114,8 @@ public class Detector : MonoBehaviour
     public virtual void WhenDetecting()
     {
         if (detection_state == det_states.undetected) StartSuspecting.Invoke();
-
-         cur_detection = Mathf.Clamp(cur_detection, 0, 100);
-        if (detection_state != det_states.detected && cur_detection == 100) NowDetected.Invoke();
+   
+        //if (detection_state != det_states.detected && cur_detection == 100) NowDetected.Invoke();
     }
 
 
@@ -132,7 +134,7 @@ public class Detector : MonoBehaviour
 
         if (Physics.Raycast(ray.origin, ray.direction, out RaycastHit hit, 2000, mask))
         {
-            Debug.DrawLine(ray.origin, hit.point, Color.green, 0.1f);
+            //Debug.DrawLine(ray.origin, hit.point, Color.green, 0.1f);
             if (hit.transform.CompareTag("Player")) return true;
         }
         return false;

@@ -10,62 +10,66 @@ public class Player : MonoBehaviour
     public Move_mode current_movement = Move_mode.still;
     public bool isInWater = false;
     
-    
- 
     [System.Serializable] private class PlrSpeed
     {
-        public Vector3 movement_direction;
-        public Vector3 surfaceNormal;
-        public float slope_limit = 30;
-
-        public float movement_speed=60;
-        public float sneak_speed =30;
-        public float run_speed=100;
-        public float fall_multiplier = 3;       //artificial snappy gravity
-        public float jump_force= 20750;
-        public float max_run_speed=13;
-        public float max__speed=8;
-        public float max_sneak_speed=3;
-        public bool isLeftStepNow = false;
-        public float step_offset = 0.2f;
+        //Movement backend values
+        public Vector3  movement_direction;
+        public Vector3  surfaceNormal;
+        public float    slope_limit =   30;
+        [Space(2)]
+        //Speed balancing values
+        public float    movement_speed= 60;
+        public float    sneak_speed =   30;
+        public float    run_speed=      100;
+        public float    fall_multiplier=3;       //artificial snappy gravity
+        public float    jump_force=     20750;
+        public float    max_run_speed=  13;
+        public float    max__speed=     8;
+        public float    max_sneak_speed=3;
+        [Space(2)]
+        //Step VFX related
+        public bool     isLeftStepNow = false;
+        public float    step_offset =   0.2f;
     }
     [Tooltip("Speed parameters")][SerializeField] private PlrSpeed pMovement;
 
     [System.Serializable] public class PlrDetections
     {
-        
-        public float cur_Detection;
-        public List<Detector> current_detectors = new();
+                            public float cur_Detection;
+                            public List<Detector> current_detectors = new();
 
         [Tooltip("current detection multipliers")]
-        [Range(0, 4)]
-        public float mulGlobal = 1;
-        public float mulVisualCur = 1, mulAudioCur = 1, mulSmellCur = 1;                            //current detection multipliers
-        public float mulVisualRun = 2f, mulVisualSneak = 0.3f;                                      //when running, detect faster, when sneaking - slower
-        public float mulAudioStill = 0.2f, mulAudioSneak = 1f, mulAudioRun = 3.5f;                  //when running, detect faster, when sneaking- slower, when still- just barely
-        public float intAudioSneak = 0.75f, intAudioWalk = 0.5455f, intAudioRun = 0.4286f;       //8-BPM  110BPM 140BPM
-        public float intervalTrackSpawning=1f;
-        public float stepInterval = 0.05f, stepLastTime = 0;
-        [HideInInspector] public UnityEvent StepTaken;
+        [Range(0, 4)]       public float mulGlobal = 1;
+        [Range(0, 4)]       public float mulVisualCur = 1, mulAudioCur = 1, mulSmellCur = 1;                            //current detection multipliers
+        [Range(0, 4)]       public float mulVisualRun = 2f, mulVisualSneak = 0.3f;                                      //when running, detect faster, when sneaking - slower
+        [Range(0, 4)]       public float mulAudioStill = 0.2f, mulAudioSneak = 1f, mulAudioRun = 3.5f;                  //when running, detect faster, when sneaking- slower, when still- just barely
+        [Range(0, 4)]       public float intAudioSneak = 0.75f, intAudioWalk = 0.5455f, intAudioRun = 0.4286f;          //8-BPM  110BPM 140BPM
+        [Range(0, 4)]       public float intervalTrackSpawning=1f;
+        [Range(0, 4)]       public float stepInterval = 0.05f, stepLastTime = 0;
+        [HideInInspector]   public UnityEvent StepTaken;
     }
+    [Space(2)]
     [Tooltip("detection parameters")] public PlrDetections pDetection;
 
     public enum Move_mode { still, sneaking, walking, running}
 
     [Header("Related objects")]
-    public Sensor_Player ground_sensor;
-    public CameraController cam_cont;
-    [HideInInspector] public Rigidbody rb;
-    [SerializeField] private GameObject prefabTrack;
-    [SerializeField] private GameObject prefabFootstep;
-    public Transform enemy_holder;
-    public Transform track_holder;
-    public Transform last_checkpoint;
-    [SerializeField] private Transform mesh_child;
-    [SerializeField] private Transform head_child;
-                      public ParticleSystem VFX_DetectFlash;
-    [SerializeField] private ParticleSystem VFX_DeathFlash;
-    public static Player instance;
+
+                 static public  Player              instance;
+                        public  Sensor_Player       ground_sensor;
+                        public  CameraController    cam_cont;
+    [HideInInspector]   public  Rigidbody           rb;
+
+    [SerializeField]    private GameObject          prefabTrack;
+    [SerializeField]    private GameObject          prefabFootstep;
+                        public  Transform           enemy_holder;
+                        public  Transform           track_holder;
+                        public  Transform           last_checkpoint;
+    [SerializeField]    private Transform           mesh_child;
+    [SerializeField]    private Transform           head_child;
+
+                        public  ParticleSystem      VFX_DetectFlash;
+    [SerializeField]    private ParticleSystem      VFX_DeathFlash;
 
     #region monobehaviour integrations
 
@@ -247,6 +251,7 @@ public class Player : MonoBehaviour
             pDetection.stepLastTime = Time.time;
             pDetection.StepTaken.Invoke(); 
 
+            //spawning footstep marks
             if (ground_sensor.detecting) 
             {
                 Vector3 spawn_pos = ground_sensor.transform.position;
@@ -310,6 +315,11 @@ public class Player : MonoBehaviour
         VFX_DeathFlash.Play();
         transform.position = DataHolder.instance.cur_data.lastCheckpoint.transform.position;
         Debug.LogWarning("You died from: "+context);
+        DataHolder.instance.AddDeath();
+
+        //Clearing detection values on death
+        foreach (Detector d in pDetection.current_detectors)
+            d.GetComponent<EnemyCore>().EndEngaging();
     }
     //
     //

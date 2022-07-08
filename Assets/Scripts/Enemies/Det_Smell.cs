@@ -82,7 +82,7 @@ public class Det_Smell : Detector
         
 
         //last known location updating when player is seen
-        if ((detection_state == det_states.detected || detection_state == det_states.tracked) && cur_detection > detToSpot) 
+        if ((detection_state == det_states.detected || detection_state == det_states.tracked) && cur_detection >= detToSpot) 
             lastPlayerLocation = Player.instance.transform.position;
         
     }

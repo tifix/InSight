@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class Det_Audio : Detector
 {
-    [Tooltip("Sensor triggered by player")] public  Sensor ears;
+    [Tooltip("Sensor triggered by player")] public  Sensor            ears;
     [Header("Hearing specific parameters")]
-    [SerializeField]                        private float distancePlayer;
-                                            public  float player_noise=2;
+                                            public  float             player_noise=2;
+                                            public  bool              isUsingComparativeVolume = false;
+                                            public  float             noiseDif = 0;
+
                                             public  List<AudioEntity> AudioEntities;
-                                            public  float hearing_radius = 12.5f;
-                                            private SphereCollider hearing_sphere;
+                                            public  float             hearing_radius = 12.5f;
+                                            private SphereCollider    hearing_sphere;
 
     [System.Serializable]
     public class AudioEntity
@@ -81,7 +83,12 @@ public class Det_Audio : Detector
                 if (RefreshAudioEntities().CompareTag("Player")) 
                 {
                     detection_state = det_states.suspected;
-                    cur_detection += AudioEntities[0].volumeRelative * Time.fixedDeltaTime * detGain;
+                    
+                    //Comparative volume system- if player is only a bit louder than the environment, then the detection increaase is slower
+                    noiseDif = Mathf.Clamp( AudioEntities[0].volumeRelative - AudioEntities[1].volumeRelative,0,1.5f);
+                    if (isUsingComparativeVolume) cur_detection += AudioEntities[0].volumeRelative * detGain * noiseDif; // * Player.instance.pDetection.mulAudioCur;
+                    
+                    else cur_detection += AudioEntities[0].volumeRelative * detGain;
                 }
             }
 
@@ -94,8 +101,8 @@ public class Det_Audio : Detector
             {
                 if (item.AudioObject.CompareTag("Player")) PlayerNoiseCur = item.volumeRelative;
             }
-            
-            cur_detection += PlayerNoiseCur * Time.fixedDeltaTime * detGain;
+
+            cur_detection += PlayerNoiseCur * detGain;// * Player.instance.pDetection.mulAudioCur;
             
         }
 
@@ -108,7 +115,7 @@ public class Det_Audio : Detector
          */
 
         //upon reaching detection threshhold - set status to detecting
-        if (detection_state != det_states.detected && cur_detection > detToSpot)
+        if (detection_state != det_states.detected && cur_detection >= detToSpot)
         {
             Debug.LogWarning("Intruder!");
             NowDetected.Invoke();
@@ -118,7 +125,7 @@ public class Det_Audio : Detector
         }
 
         //last known location updating when player is detected
-        if((detection_state==det_states.detected || detection_state==det_states.tracked)&& cur_detection>detToSpot) lastPlayerLocation = Player.instance.transform.position;   
+        if((detection_state==det_states.detected || detection_state==det_states.tracked)&& cur_detection >= detToSpot) lastPlayerLocation = Player.instance.transform.position;   
     }
 
     //returns true if player is in cone of vision and not behind cover, otherwise returns false.

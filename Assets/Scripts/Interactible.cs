@@ -6,15 +6,16 @@ using UnityEngine.Events;
 [RequireComponent(typeof(Collider))]
 public class Interactible : MonoBehaviour
 {
-    public bool inRange = false;
-    public bool wasUsed = false;
-    public UnityEvent interaction;
+    public bool         inRange     = false;
+    public bool         wasUsed     = false;
+    public bool         singleUse   = false;
+    public UnityEvent   interaction;
 
 
-    private void OnTriggerEnter(Collider other) => inRange = true;
-    private void OnTriggerExit(Collider other) => inRange = false;
+    void OnTriggerEnter(Collider other) => inRange = true;
+    void OnTriggerExit(Collider other) => inRange = false;
 
-    // Update is called once per frame
+
     void FixedUpdate()
     {
         if (Input.GetKeyDown(KeyCode.E) && inRange) Interaction();
@@ -22,8 +23,8 @@ public class Interactible : MonoBehaviour
 
     public virtual void Interaction() 
     {
-        Debug.Log("Here");
         wasUsed = true;
         interaction.Invoke();
+        if (singleUse) Destroy(this);
     }
 }

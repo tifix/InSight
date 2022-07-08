@@ -22,7 +22,7 @@ public class Det_Visual : Detector
         }
 
         //upon reaching detection threshhold - set status to detecting
-        if (detection_state != det_states.detected && cur_detection > detToSpot)
+        if (detection_state != det_states.detected && cur_detection >= detToSpot)
         {
             Debug.LogWarning("Intruder!");
             NowDetected.Invoke();
@@ -33,7 +33,7 @@ public class Det_Visual : Detector
         
 
         //last known location updating when player is seen
-        if ((detection_state == det_states.detected || detection_state == det_states.tracked) && cur_detection > detToSpot) lastPlayerLocation = Player.instance.transform.position;
+        if ((detection_state == det_states.detected || detection_state == det_states.tracked) && cur_detection >= detToSpot) lastPlayerLocation = Player.instance.transform.position;
     }
 
 

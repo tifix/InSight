@@ -6,9 +6,9 @@ using UnityEngine.AI;
 public class E_PatrolArea : E_Behaviour
 {
     [Header("Patroling specific params")]
-    [SerializeField] private MeshCollider patrol_zone;
-    [SerializeField] private NavMeshAgent agent;
-    [SerializeField] private Vector3 destination;
+    [SerializeField] private MeshCollider   patrol_zone;
+    [SerializeField] private NavMeshAgent   agent;
+    [SerializeField] private Vector3        destination;
 
     public override void LoopedAction() => DeterminePatrolDestination();
 
@@ -23,7 +23,7 @@ public class E_PatrolArea : E_Behaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E)) SetDestinationToMousePosition();  //bait enemies with 'E'
+        if (Input.GetKeyDown(KeyCode.Q) && DataHolder.instance.cheats.devToolsEnabled) SetDestinationToMousePosition();  //bait enemies with 'Q'
     }
 
     Vector3 DeterminePatrolDestination() 

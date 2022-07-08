@@ -11,12 +11,12 @@ public class InvokeOnTrigger : MonoBehaviour
 
     protected virtual void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject==Player.instance.gameObject)
+        if(other.gameObject.CompareTag("Player"))
         Entered.Invoke();
     }
 
     protected void OnTriggerExit(Collider other)
     {
-        if (other.gameObject == Player.instance.gameObject) Left.Invoke();
+        if (other.gameObject.CompareTag("Player")) Left.Invoke();
     }
 }

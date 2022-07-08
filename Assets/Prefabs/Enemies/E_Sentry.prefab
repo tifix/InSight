@@ -130,9 +130,8 @@ GameObject:
   - component: {fileID: 455543117230177637}
   - component: {fileID: 6792620685566752570}
   - component: {fileID: 1895344641852595309}
-  - component: {fileID: 8951776002784693601}
+  - component: {fileID: 7006241545640770232}
   - component: {fileID: 1881801471868555647}
-  - component: {fileID: 5032549507106532145}
   - component: {fileID: 911766026311542220}
   m_Layer: 0
   m_Name: EnemyMovingElements
@@ -174,8 +173,9 @@ MonoBehaviour:
   Behaviours:
   - {fileID: 6792620685566752570}
   - {fileID: 1895344641852595309}
-  - {fileID: 8951776002784693601}
+  - {fileID: 7006241545640770232}
   - {fileID: 1881801471868555647}
+  - {fileID: 911766026311542220}
   detector: {fileID: 6242412414777524164}
 --- !u!114 &6242412414777524164
 MonoBehaviour:
@@ -207,17 +207,18 @@ MonoBehaviour:
   detection_state: 0
   cur_detection: 0
   remainingTrackingTime: 0
+  distancePlayer: 0
   detectionSource: {fileID: 6091120415608226174}
-  detDecay: 20
-  detGain: 25
+  detDecay: 15
+  detGain: 35
   detGainTracked: 40
   trackingTime: 10
-  contactDamageRange: 2.5
   lastPlayerLocation: {x: 0, y: 0, z: 0}
   agent: {fileID: 455543117230177637}
   ears: {fileID: 7956863736053825998}
-  distancePlayer: 0
   player_noise: 2
+  isUsingComparativeVolume: 1
+  noiseDif: 0
   AudioEntities: []
   hearing_radius: 25
 --- !u!195 &455543117230177637
@@ -323,14 +324,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac3eb6b411c596640a700c9ad939a753, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  is_performing: 1
-  parent_state: 0
+  is_performing: 0
+  parent_state: 1
   base_interval: 9
   interval_randomness: 2
   patrol_zone: {fileID: 4896518374059626802}
   agent: {fileID: 455543117230177637}
   destination: {x: 0, y: 0, z: 0}
---- !u!114 &8951776002784693601
+--- !u!114 &7006241545640770232
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -339,14 +340,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 6287842383671308758}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6065c1582ddbeea4c8937416d76dd26d, type: 3}
+  m_Script: {fileID: 11500000, guid: e56e5448703c5f247afb89c0f9574980, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   is_performing: 0
   parent_state: 1
-  base_interval: 1
-  interval_randomness: 0.3
-  speedMultiplier: 1
+  base_interval: 2
+  interval_randomness: 1
+  rotDuration: 0.25
+  target: {fileID: 0}
+  autoTargetAudio: 1
 --- !u!114 &1881801471868555647
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -364,23 +367,6 @@ MonoBehaviour:
   base_interval: 0.25
   interval_randomness: 0
   speedMultiplier: 1.5
---- !u!114 &5032549507106532145
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6287842383671308758}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e56e5448703c5f247afb89c0f9574980, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  is_performing: 0
-  parent_state: 0
-  base_interval: 2
-  interval_randomness: 1
-  rotDuration: 0.25
 --- !u!114 &911766026311542220
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -393,6 +379,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9707e65f3448df45a5cd646c5733185, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  is_performing: 0
+  parent_state: 3
+  base_interval: 2
+  interval_randomness: 1
+  contactDamageRange: 2.5
 --- !u!1 &6899027087244208641
 GameObject:
   m_ObjectHideFlags: 0

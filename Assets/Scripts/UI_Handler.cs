@@ -54,7 +54,7 @@ public class UI_Handler : MonoBehaviour
     {
         ToggleCheatsDisplay(DevTools.instance.devToolsEnabled);
         counterDetection.text =DataHolder.instance.cur_data.totalDetections.ToString();
-        counterKills.text =DataHolder.instance.cur_data.totalKills.ToString();
+        counterKills.text =DataHolder.instance.cur_data.totalDeaths.ToString();
         counterObjectives.text =DataHolder.instance.cur_data.totalObjectives.ToString();
     }
 

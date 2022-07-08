@@ -19,9 +19,9 @@ public class DataHolder : MonoBehaviour
     [System.Serializable] public class Data
     {
         public Transform lastCheckpoint;
-        public float totalKills = 0;
-        public float totalDetections = 0;
-        public float totalObjectives = 0;
+        public int totalDeaths = 0;
+        public int totalDetections = 0;
+        public int totalObjectives = 0;
         [Tooltip("should show as 0 until Victory Screen is shown")] public float totalGameTime=0;
     }
     public Data cur_data = new();
@@ -55,16 +55,18 @@ public class DataHolder : MonoBehaviour
 
     public void AddObjective()
     {
+        Debug.Log("objective++");
         cur_data.totalObjectives++;
     }
     public void AddDetection()
     {
+        Debug.Log("detection++");
         cur_data.totalDetections++;
     }
 
-    public void AddKill()
+    public void AddDeath()
     {
-        cur_data.totalKills++;
+        cur_data.totalDeaths++;
     }
 
     #endregion
@@ -128,5 +130,13 @@ public class DataHolder : MonoBehaviour
     }
 
 
+    public void SpawnAtPosition(GameObject what, Transform where) 
+    {
+        GameObject GO =GameObject.Instantiate(what, where);
+        GO.transform.SetParent(null);
+    }
 
+    public void SpawnVFXCheckpoint(Transform t) =>SpawnAtPosition(Resources.Load("VFX/VFX_Interacted_pinch") as GameObject, t);
+    public void SpawnVFXObjective(Transform t) =>SpawnAtPosition(Resources.Load("VFX/VFX_Interacted_cyllinder") as GameObject, t);
+        
 }

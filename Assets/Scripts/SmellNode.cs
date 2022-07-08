@@ -34,7 +34,7 @@ public class SmellNode : KillAfterTime
         Collider[] cols=Physics.OverlapSphere(transform.position, 0.2f);
         foreach (Collider col in cols) 
         {
-            if (col.transform.gameObject.CompareTag("Water")) { Debug.LogWarning("In Water!"); return true; }
+            if (col.transform.gameObject.CompareTag("Water")) {  return true; } //Debug.Log("In Water!");
         }
 
         return false;
