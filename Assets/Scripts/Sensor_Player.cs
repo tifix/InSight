@@ -5,10 +5,16 @@ using UnityEngine;
 public class Sensor_Player : Sensor
 {
     public bool detectingWater;
-    
+    public LayerMask viableTerrain;
+
     public override void OnTriggerStay(Collider other)
     {
-        base.OnTriggerStay(other);
+        if ((viableTerrain & 1 << other.gameObject.layer) == 1 << other.gameObject.layer)
+        {
+            detecting = true;
+            base.OnTriggerStay(other);
+        }
+
         if (other.CompareTag("Water")) detectingWater = true;
     }
     public override void OnTriggerExit(Collider other)

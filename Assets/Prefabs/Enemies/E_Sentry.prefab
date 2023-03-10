@@ -209,14 +209,16 @@ MonoBehaviour:
   remainingTrackingTime: 0
   distancePlayer: 0
   detectionSource: {fileID: 6091120415608226174}
-  detDecay: 15
-  detGain: 35
-  detGainTracked: 40
+  detDecay: 10
+  detGain: 20
+  detGainTracked: 30
+  detShockLength: 0.5
   trackingTime: 10
   lastPlayerLocation: {x: 0, y: 0, z: 0}
   agent: {fileID: 455543117230177637}
   ears: {fileID: 7956863736053825998}
   player_noise: 2
+  detGainPerStep: 0
   isUsingComparativeVolume: 1
   noiseDif: 0
   AudioEntities: []

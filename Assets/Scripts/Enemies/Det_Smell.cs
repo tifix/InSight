@@ -23,7 +23,9 @@ public class Det_Smell : Detector
     public override void FixedUpdate()
     {
         if(detection_state!=det_states.detected)
-        if (cur_detection > Mathf.Epsilon) cur_detection= Mathf.Lerp(cur_detection- detDecay * Time.fixedDeltaTime,0,100);
+
+
+            if (cur_detection > Mathf.Epsilon) cur_detection= Mathf.Lerp(cur_detection- detDecay * Time.fixedDeltaTime,0,100);
 
         if (isWindAffected) OffsetSmellByWind();
         base.FixedUpdate(); //Base handles behaviour when not detecting

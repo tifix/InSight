@@ -7,6 +7,7 @@ using UnityEngine.Events;
 public class Interactible : MonoBehaviour
 {
     public bool         inRange     = false;
+    public bool         isAutomatic     = false;
     public bool         wasUsed     = false;
     public bool         singleUse   = false;
     public UnityEvent   interaction;
@@ -18,7 +19,9 @@ public class Interactible : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (Input.GetKeyDown(KeyCode.E) && inRange) Interaction();
+        if (
+            (Input.GetKeyDown(KeyCode.E) && inRange) || (isAutomatic && inRange)
+            ) Interaction();
     }
 
     public virtual void Interaction() 

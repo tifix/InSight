@@ -7,6 +7,7 @@ public class Det_Audio : Detector
     [Tooltip("Sensor triggered by player")] public  Sensor            ears;
     [Header("Hearing specific parameters")]
                                             public  float             player_noise=2;
+                                            public  float             detGainPerStep=0;
                                             public  bool              isUsingComparativeVolume = false;
                                             public  float             noiseDif = 0;
 
@@ -86,9 +87,14 @@ public class Det_Audio : Detector
                     
                     //Comparative volume system- if player is only a bit louder than the environment, then the detection increaase is slower
                     noiseDif = Mathf.Clamp( AudioEntities[0].volumeRelative - AudioEntities[1].volumeRelative,0,1.5f);
-                    if (isUsingComparativeVolume) cur_detection += AudioEntities[0].volumeRelative * detGain * noiseDif; // * Player.instance.pDetection.mulAudioCur;
+
+                    detGainPerStep = 0;
                     
-                    else cur_detection += AudioEntities[0].volumeRelative * detGain;
+                    if (isUsingComparativeVolume) detGainPerStep = AudioEntities[0].volumeRelative * detGain * noiseDif * Player.instance.pDetection.mulAudioCur;
+                    else detGainPerStep = AudioEntities[0].volumeRelative * detGain;
+
+                    if (detGainPerStep > 33) Debug.Log("making extreme noise "+ detGainPerStep);
+                    if(!Player.instance.pDetection.isDetectionGainFrozen)cur_detection += Mathf.Clamp(detGainPerStep, 0, 33); 
                 }
             }
 
@@ -102,8 +108,8 @@ public class Det_Audio : Detector
                 if (item.AudioObject.CompareTag("Player")) PlayerNoiseCur = item.volumeRelative;
             }
 
-            cur_detection += PlayerNoiseCur * detGain;// * Player.instance.pDetection.mulAudioCur;
-            
+            if (!Player.instance.pDetection.isDetectionGainFrozen) cur_detection += Mathf.Clamp(detGainPerStep, 0, 33);
+
         }
 
     }

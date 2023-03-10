@@ -13,19 +13,17 @@ public class Player : MonoBehaviour
     [System.Serializable] private class PlrSpeed
     {
         //Movement backend values
-        public Vector3  movement_direction;
+        public Vector3  movement_direction, dir_memory;
         public Vector3  surfaceNormal;
         public float    slope_limit =   30;
         [Space(2)]
         //Speed balancing values
-        public float    movement_speed= 60;
-        public float    sneak_speed =   30;
-        public float    run_speed=      100;
+        public float    tapMaxDuration = 0.5f, tapInitialisedTimestamp = 0f, tapForce=20;
+        public float    movement_speed= 60,  sneak_speed = 30,   run_speed = 100;
+        public float    max_sneak_speed = 3, max_run_speed = 13, max__speed = 8;
+
         public float    fall_multiplier=3;       //artificial snappy gravity
         public float    jump_force=     20750;
-        public float    max_run_speed=  13;
-        public float    max__speed=     8;
-        public float    max_sneak_speed=3;
         [Space(2)]
         //Step VFX related
         public bool     isLeftStepNow = false;
@@ -36,17 +34,18 @@ public class Player : MonoBehaviour
     [System.Serializable] public class PlrDetections
     {
                             public float cur_Detection;
+                            public bool isDetectionGainFrozen;
                             public List<Detector> current_detectors = new();
 
         [Tooltip("current detection multipliers")]
         [Range(0, 4)]       public float mulGlobal = 1;
         [Range(0, 4)]       public float mulVisualCur = 1, mulAudioCur = 1, mulSmellCur = 1;                            //current detection multipliers
         [Range(0, 4)]       public float mulVisualRun = 2f, mulVisualSneak = 0.3f;                                      //when running, detect faster, when sneaking - slower
-        [Range(0, 4)]       public float mulAudioStill = 0.2f, mulAudioSneak = 1f, mulAudioRun = 3.5f;                  //when running, detect faster, when sneaking- slower, when still- just barely
+        [Range(0, 4)]       public float mulAudioStill = 0.2f, mulAudioSneak = 1f, mulAudioWalk = 2f, mulAudioRun = 3.5f, mulAudioWater=1.5f;                  //when running, detect faster, when sneaking- slower, when still- just barely
         [Range(0, 4)]       public float intAudioSneak = 0.75f, intAudioWalk = 0.5455f, intAudioRun = 0.4286f;          //8-BPM  110BPM 140BPM
         [Range(0, 4)]       public float intervalTrackSpawning=1f;
         [Range(0, 4)]       public float stepInterval = 0.05f, stepLastTime = 0;
-        [HideInInspector]   public UnityEvent StepTaken;
+        [HideInInspector]   public UnityEvent StepTaken=new UnityEvent();
     }
     [Space(2)]
     [Tooltip("detection parameters")] public PlrDetections pDetection;
@@ -79,13 +78,9 @@ public class Player : MonoBehaviour
         else Destroy(gameObject);
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {   
-        StartCoroutine(LeaveBehindTracks());
-    }
+    void Start()=> StartCoroutine(LeaveBehindTracks());
+    
 
-    // Update is called once per frame
     void Update()
     {
         //show the highest detection on detect slider
@@ -94,9 +89,20 @@ public class Player : MonoBehaviour
 
         //Mesh lil movements
         mesh_child.rotation = Quaternion.LookRotation(mesh_child.forward + VectorFlattenY(pMovement.movement_direction * 0.06f),Vector3.up);
-        Quaternion q1 = Quaternion.LookRotation(head_child.forward + cam_cont.transform.right * 0.09f, Vector3.up);    //    + Camera.main.transform.forward*0.2f //pMovement.movement_direction 
+        Quaternion q1 = Quaternion.LookRotation(head_child.forward + cam_cont.transform.right * 0.09f, Vector3.up);    
         head_child.rotation = q1;
+
+        //tap tap movement gtting startInput time
+        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.S) 
+         || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D)) StartCoroutine(FreezeDetctionWhenTapping());
+
+        //when key released super fast, do a tiny impulse movement
+        if (pDetection.isDetectionGainFrozen)
+        if(Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.S)
+        || Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.D)) LilDash();  //;
     }
+
+
 
     private void FixedUpdate()
     {
@@ -127,14 +133,15 @@ public class Player : MonoBehaviour
             {
                 pDetection.mulVisualCur = pDetection.mulVisualSneak * pDetection.mulGlobal;
                 pDetection.mulAudioCur = pDetection.mulAudioSneak * pDetection.mulGlobal;
-                pDetection.intervalTrackSpawning = 1/ pDetection.mulGlobal;
+                    if (ground_sensor.detectingWater) pDetection.mulAudioCur *= pDetection.mulAudioWater;
+                    pDetection.intervalTrackSpawning = 1/ pDetection.mulGlobal;
                 break;
             }
         case Move_mode.walking:
             {
                 pDetection.mulVisualCur = 1 * pDetection.mulGlobal;    
-                pDetection.mulAudioCur = 2f * pDetection.mulGlobal;
-                    if(ground_sensor.detectingWater) pDetection.mulAudioCur *= 2f * pDetection.mulGlobal;
+                pDetection.mulAudioCur = pDetection.mulAudioWalk * pDetection.mulGlobal;
+                    if(ground_sensor.detectingWater) pDetection.mulAudioCur *= pDetection.mulAudioWater;
                 pDetection.intervalTrackSpawning = 0.5f / pDetection.mulGlobal;
                 break;
             }
@@ -142,7 +149,7 @@ public class Player : MonoBehaviour
             {
                 pDetection.mulVisualCur = pDetection.mulVisualRun * pDetection.mulGlobal;
                 pDetection.mulAudioCur = pDetection.mulAudioRun * pDetection.mulGlobal;
-                    if (ground_sensor.detectingWater) pDetection.mulAudioCur *= 2 * pDetection.mulGlobal;
+                    if (ground_sensor.detectingWater) pDetection.mulAudioCur *= pDetection.mulAudioWater;
                 pDetection.intervalTrackSpawning = 0.25f / pDetection.mulGlobal;
                 break;
             }
@@ -150,11 +157,30 @@ public class Player : MonoBehaviour
             {
                 //passively return to  walking multiplier
                 pDetection.mulVisualCur = 1 * pDetection.mulGlobal;
-                pDetection.mulAudioCur = 2.5f * pDetection.mulGlobal;
+                pDetection.mulAudioCur = pDetection.mulAudioWalk * pDetection.mulGlobal;
                 pDetection.intervalTrackSpawning = 0.5f / pDetection.mulGlobal;
                 break;
             }   
         }    
+    }
+
+    IEnumerator FreezeDetctionWhenTapping()
+    {
+        Debug.Log("Tapped");
+        yield return new WaitForEndOfFrame();
+        Debug.Log("first step inflicted. Invulnrability invoked.");
+        pDetection.isDetectionGainFrozen = true;
+        yield return new WaitForSeconds(pDetection.stepInterval-Mathf.Epsilon);     //remove invulnerability when 2nd step is about to be taken
+        Debug.Log("Now just moving");
+        pDetection.isDetectionGainFrozen = false;
+    }
+
+    void LilDash() 
+    {
+        
+        Debug.Log("now dashing! "+ pMovement.dir_memory);
+        
+        rb.AddForce(pMovement.dir_memory * pMovement.tapForce, ForceMode.Impulse);
     }
 
     public Vector3 GetSurfaceNormal() 
@@ -170,7 +196,19 @@ public class Player : MonoBehaviour
         }
         return Vector3.up;
     }
+    Vector3 GetSurfaceAdjustedForward(Vector2 InputVector)
+    {
+        pMovement.surfaceNormal = GetSurfaceNormal();
 
+        Vector3 MoveForward = Vector3.Cross(pMovement.surfaceNormal, cam_cont.transform.forward * InputVector.y).normalized;
+        Vector3 MoveSideways = Vector3.Cross(pMovement.surfaceNormal, cam_cont.transform.right * InputVector.x).normalized;
+
+        Debug.DrawRay(transform.position + transform.up * 2, MoveForward * .3f, Color.blue);
+        Debug.DrawRay(transform.position + transform.up * 2, MoveSideways * .3f, Color.red);
+        Debug.DrawRay(transform.position + transform.up * 2, cam_cont.transform.right * .3f, Color.yellow);
+        
+        return MoveForward + MoveSideways;
+    }
     public Vector3 VectorFlattenY(Vector3 inVect3) 
     {
         return new Vector3(inVect3.x, 0, inVect3.z);
@@ -179,15 +217,8 @@ public class Player : MonoBehaviour
     void MovementInput()
     {
         Vector2 InputVector = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-        pMovement.surfaceNormal = GetSurfaceNormal();
-
-        Vector3 MoveForward = Vector3.Cross(pMovement.surfaceNormal, cam_cont.transform.forward * InputVector.y).normalized;
-        Vector3 MoveSideways = Vector3.Cross(pMovement.surfaceNormal, cam_cont.transform.right * InputVector.x).normalized;
-        pMovement.movement_direction = MoveForward + MoveSideways;
-
-        Debug.DrawRay(transform.position + transform.up*2, MoveForward*.3f, Color.blue);
-        Debug.DrawRay(transform.position+transform.up * 2, MoveSideways * .3f, Color.red);
-        Debug.DrawRay(transform.position+transform.up * 2, cam_cont.transform.right * .3f, Color.yellow);
+        pMovement.movement_direction = GetSurfaceAdjustedForward(InputVector);
+        if (pMovement.movement_direction != Vector3.zero) pMovement.dir_memory = pMovement.movement_direction;
 
         //applying the force depending on the current movement mode and maximum speed values
         Vector3 applied_force = Vector3.zero;
@@ -207,6 +238,7 @@ public class Player : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftControl)) { current_movement = Move_mode.sneaking; return; }
         current_movement = Move_mode.walking;
     }
+
 
 
 

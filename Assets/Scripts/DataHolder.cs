@@ -10,7 +10,7 @@ public class DataHolder : MonoBehaviour
     //initialisation
     public enum area { hub, hearing, smell, sight };
     public static DataHolder instance;
-    
+    public Light SunLight;
 
     //events
     public UnityEvent SceneLoaded;
@@ -138,5 +138,10 @@ public class DataHolder : MonoBehaviour
 
     public void SpawnVFXCheckpoint(Transform t) =>SpawnAtPosition(Resources.Load("VFX/VFX_Interacted_pinch") as GameObject, t);
     public void SpawnVFXObjective(Transform t) =>SpawnAtPosition(Resources.Load("VFX/VFX_Interacted_cyllinder") as GameObject, t);
-        
+    
+    public void SetSunlight(bool state) 
+    {
+        if(SunLight.gameObject.activeInHierarchy!= state) SunLight.gameObject.SetActive(state);
+    }
+
 }

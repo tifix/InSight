@@ -35,7 +35,7 @@ public class Detector : MonoBehaviour
     public readonly float detToSpot      = 100;
     [Space]
     //
-    [Tooltip("Time between enemy fully spotting the player and them engaging")]         public readonly float detShockLength = 0.5f;  //= 0.5f;
+    [Tooltip("Time between enemy fully spotting the player and them engaging")]         public          float detShockLength = 0.5f;  //= 0.5f;
     [Tooltip("Safety check to ensure only 1 detection happens in a short timespan")]    public          bool currentlyEngaging { get; set; } = false;
     [Tooltip("time spent lookin after player is no longer detected")]                   public          float trackingTime = 10;
     

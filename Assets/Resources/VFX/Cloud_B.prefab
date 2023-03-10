@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6243400751544547087}
   - component: {fileID: 2652848543849475383}
   - component: {fileID: 381666368926792803}
+  - component: {fileID: 643876151093690619}
   m_Layer: 0
   m_Name: Cloud_B
   m_TagString: Untagged
@@ -27,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 5817767043884480186}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4, y: 4, z: 4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -41,7 +42,7 @@ VisualEffect:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5817767043884480186}
   m_Enabled: 1
-  m_Asset: {fileID: 8926484042661614526, guid: da8bf1efec8925d42a14c10f2918e1ff, type: 3}
+  m_Asset: {fileID: 8926484042661614526, guid: 67c143a38afa3e843bfdf702ae1ebd01, type: 3}
   m_InitialEventName: OnPlay
   m_InitialEventNameOverriden: 0
   m_StartSeed: 0
@@ -53,17 +54,23 @@ VisualEffect:
       - m_Value: 0
         m_Name: CloudScale
         m_Overridden: 0
+      - m_Value: 5
+        m_Name: Range
+        m_Overridden: 1
     m_Vector2f:
       m_Array: []
     m_Vector3f:
-      m_Array: []
+      m_Array:
+      - m_Value: {x: 4, y: 4, z: 4}
+        m_Name: SpawnRange
+        m_Overridden: 1
     m_Vector4f:
       m_Array: []
     m_Uint:
       m_Array: []
     m_Int:
       m_Array:
-      - m_Value: 12
+      - m_Value: 3
         m_Name: CloudDensity
         m_Overridden: 1
     m_Matrix4x4f:
@@ -74,8 +81,8 @@ VisualEffect:
           serializedVersion: 2
           m_Curve:
           - serializedVersion: 3
-            time: -0
-            value: 3.0106714
+            time: -0.0060271323
+            value: 2.5119672
             inSlope: 0.4814453
             outSlope: 0.4814453
             tangentMode: 34
@@ -83,8 +90,8 @@ VisualEffect:
             inWeight: 0
             outWeight: 0.33333334
           - serializedVersion: 3
-            time: 1
-            value: 3.4921167
+            time: 0.9939729
+            value: 2.9934125
             inSlope: 0.4814453
             outSlope: 0.4814453
             tangentMode: 34
@@ -95,6 +102,32 @@ VisualEffect:
           m_PostInfinity: 2
           m_RotationOrder: 4
         m_Name: CloudSize
+        m_Overridden: 1
+      - m_Value:
+          serializedVersion: 2
+          m_Curve:
+          - serializedVersion: 3
+            time: -0.002213195
+            value: 2.4939554
+            inSlope: 0.9999999
+            outSlope: 0.9999999
+            tangentMode: 34
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0.33333334
+          - serializedVersion: 3
+            time: 0.9977869
+            value: 3.4939554
+            inSlope: 0.9999999
+            outSlope: 0.9999999
+            tangentMode: 34
+            weightedMode: 0
+            inWeight: 0.33333334
+            outWeight: 0
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+        m_Name: CloudSizeRange
         m_Overridden: 1
     m_Gradient:
       m_Array: []
@@ -142,3 +175,16 @@ VFXRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!135 &643876151093690619
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5817767043884480186}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 5
+  m_Center: {x: 0, y: 0, z: 0}

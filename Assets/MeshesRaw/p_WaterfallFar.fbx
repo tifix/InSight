@@ -1,0 +1,758 @@
+; FBX 7.4.0 project file
+; ----------------------------------------------------
+
+FBXHeaderExtension:  {
+	FBXHeaderVersion: 1003
+	FBXVersion: 7400
+	CreationTimeStamp:  {
+		Version: 1000
+		Year: 2022
+		Month: 8
+		Day: 1
+		Hour: 16
+		Minute: 32
+		Second: 11
+		Millisecond: 185
+	}
+	Creator: "FBX SDK/FBX Plugins version 2020.2"
+	SceneInfo: "SceneInfo::GlobalInfo", "UserData" {
+		Type: "UserData"
+		Version: 100
+		MetaData:  {
+			Version: 100
+			Title: "Created by FBX Exporter from Unity Technologies"
+			Subject: ""
+			Author: "Unity Technologies"
+			Keywords: "Nodes Meshes Materials Textures Cameras Lights Skins Animation"
+			Revision: "1.0"
+			Comment: ""
+		}
+		Properties70:  {
+			P: "DocumentUrl", "KString", "Url", "", "D:\ProjectsCurrent\InSight\Assets\mcl3e414_raw_WaterfallFar.fbx"
+			P: "SrcDocumentUrl", "KString", "Url", "", "D:\ProjectsCurrent\InSight\Assets\mcl3e414_raw_WaterfallFar.fbx"
+			P: "Original", "Compound", "", ""
+			P: "Original|ApplicationVendor", "KString", "", "", ""
+			P: "Original|ApplicationName", "KString", "", "", "Unity FBX Exporter"
+			P: "Original|ApplicationVersion", "KString", "", "", "4.1.2"
+			P: "Original|DateTime_GMT", "DateTime", "", "", ""
+			P: "Original|FileName", "KString", "", "", ""
+			P: "LastSaved", "Compound", "", ""
+			P: "LastSaved|ApplicationVendor", "KString", "", "", ""
+			P: "LastSaved|ApplicationName", "KString", "", "", "Unity FBX Exporter"
+			P: "LastSaved|ApplicationVersion", "KString", "", "", "4.1.2"
+			P: "LastSaved|DateTime_GMT", "DateTime", "", "", ""
+		}
+	}
+}
+GlobalSettings:  {
+	Version: 1000
+	Properties70:  {
+		P: "UpAxis", "int", "Integer", "",1
+		P: "UpAxisSign", "int", "Integer", "",1
+		P: "FrontAxis", "int", "Integer", "",2
+		P: "FrontAxisSign", "int", "Integer", "",1
+		P: "CoordAxis", "int", "Integer", "",0
+		P: "CoordAxisSign", "int", "Integer", "",1
+		P: "OriginalUpAxis", "int", "Integer", "",-1
+		P: "OriginalUpAxisSign", "int", "Integer", "",1
+		P: "UnitScaleFactor", "double", "Number", "",1
+		P: "OriginalUnitScaleFactor", "double", "Number", "",1
+		P: "AmbientColor", "ColorRGB", "Color", "",0,0,0
+		P: "DefaultCamera", "KString", "", "", "Producer Perspective"
+		P: "TimeMode", "enum", "", "",0
+		P: "TimeProtocol", "enum", "", "",2
+		P: "SnapOnFrameMode", "enum", "", "",0
+		P: "TimeSpanStart", "KTime", "Time", "",0
+		P: "TimeSpanStop", "KTime", "Time", "",46186158000
+		P: "CustomFrameRate", "double", "Number", "",-1
+		P: "TimeMarker", "Compound", "", ""
+		P: "CurrentTimeMarker", "int", "Integer", "",-1
+	}
+}
+
+; Documents Description
+;------------------------------------------------------------------
+
+Documents:  {
+	Count: 1
+	Document: 2834717901024, "Scene", "Scene" {
+		Properties70:  {
+			P: "SourceObject", "object", "", ""
+			P: "ActiveAnimStackName", "KString", "", "", ""
+		}
+		RootNode: 0
+	}
+}
+
+; Document References
+;------------------------------------------------------------------
+
+References:  {
+}
+
+; Object definitions
+;------------------------------------------------------------------
+
+Definitions:  {
+	Version: 100
+	Count: 20
+	ObjectType: "GlobalSettings" {
+		Count: 1
+	}
+	ObjectType: "Model" {
+		Count: 17
+		PropertyTemplate: "FbxNode" {
+			Properties70:  {
+				P: "QuaternionInterpolate", "enum", "", "",0
+				P: "RotationOffset", "Vector3D", "Vector", "",0,0,0
+				P: "RotationPivot", "Vector3D", "Vector", "",0,0,0
+				P: "ScalingOffset", "Vector3D", "Vector", "",0,0,0
+				P: "ScalingPivot", "Vector3D", "Vector", "",0,0,0
+				P: "TranslationActive", "bool", "", "",0
+				P: "TranslationMin", "Vector3D", "Vector", "",0,0,0
+				P: "TranslationMax", "Vector3D", "Vector", "",0,0,0
+				P: "TranslationMinX", "bool", "", "",0
+				P: "TranslationMinY", "bool", "", "",0
+				P: "TranslationMinZ", "bool", "", "",0
+				P: "TranslationMaxX", "bool", "", "",0
+				P: "TranslationMaxY", "bool", "", "",0
+				P: "TranslationMaxZ", "bool", "", "",0
+				P: "RotationOrder", "enum", "", "",0
+				P: "RotationSpaceForLimitOnly", "bool", "", "",0
+				P: "RotationStiffnessX", "double", "Number", "",0
+				P: "RotationStiffnessY", "double", "Number", "",0
+				P: "RotationStiffnessZ", "double", "Number", "",0
+				P: "AxisLen", "double", "Number", "",10
+				P: "PreRotation", "Vector3D", "Vector", "",0,0,0
+				P: "PostRotation", "Vector3D", "Vector", "",0,0,0
+				P: "RotationActive", "bool", "", "",0
+				P: "RotationMin", "Vector3D", "Vector", "",0,0,0
+				P: "RotationMax", "Vector3D", "Vector", "",0,0,0
+				P: "RotationMinX", "bool", "", "",0
+				P: "RotationMinY", "bool", "", "",0
+				P: "RotationMinZ", "bool", "", "",0
+				P: "RotationMaxX", "bool", "", "",0
+				P: "RotationMaxY", "bool", "", "",0
+				P: "RotationMaxZ", "bool", "", "",0
+				P: "InheritType", "enum", "", "",0
+				P: "ScalingActive", "bool", "", "",0
+				P: "ScalingMin", "Vector3D", "Vector", "",0,0,0
+				P: "ScalingMax", "Vector3D", "Vector", "",1,1,1
+				P: "ScalingMinX", "bool", "", "",0
+				P: "ScalingMinY", "bool", "", "",0
+				P: "ScalingMinZ", "bool", "", "",0
+				P: "ScalingMaxX", "bool", "", "",0
+				P: "ScalingMaxY", "bool", "", "",0
+				P: "ScalingMaxZ", "bool", "", "",0
+				P: "GeometricTranslation", "Vector3D", "Vector", "",0,0,0
+				P: "GeometricRotation", "Vector3D", "Vector", "",0,0,0
+				P: "GeometricScaling", "Vector3D", "Vector", "",1,1,1
+				P: "MinDampRangeX", "double", "Number", "",0
+				P: "MinDampRangeY", "double", "Number", "",0
+				P: "MinDampRangeZ", "double", "Number", "",0
+				P: "MaxDampRangeX", "double", "Number", "",0
+				P: "MaxDampRangeY", "double", "Number", "",0
+				P: "MaxDampRangeZ", "double", "Number", "",0
+				P: "MinDampStrengthX", "double", "Number", "",0
+				P: "MinDampStrengthY", "double", "Number", "",0
+				P: "MinDampStrengthZ", "double", "Number", "",0
+				P: "MaxDampStrengthX", "double", "Number", "",0
+				P: "MaxDampStrengthY", "double", "Number", "",0
+				P: "MaxDampStrengthZ", "double", "Number", "",0
+				P: "PreferedAngleX", "double", "Number", "",0
+				P: "PreferedAngleY", "double", "Number", "",0
+				P: "PreferedAngleZ", "double", "Number", "",0
+				P: "LookAtProperty", "object", "", ""
+				P: "UpVectorProperty", "object", "", ""
+				P: "Show", "bool", "", "",1
+				P: "NegativePercentShapeSupport", "bool", "", "",1
+				P: "DefaultAttributeIndex", "int", "Integer", "",-1
+				P: "Freeze", "bool", "", "",0
+				P: "LODBox", "bool", "", "",0
+				P: "Lcl Translation", "Lcl Translation", "", "A",0,0,0
+				P: "Lcl Rotation", "Lcl Rotation", "", "A",0,0,0
+				P: "Lcl Scaling", "Lcl Scaling", "", "A",1,1,1
+				P: "Visibility", "Visibility", "", "A",1
+				P: "Visibility Inheritance", "Visibility Inheritance", "", "",1
+			}
+		}
+	}
+	ObjectType: "Geometry" {
+		Count: 1
+		PropertyTemplate: "FbxMesh" {
+			Properties70:  {
+				P: "Color", "ColorRGB", "Color", "",0.8,0.8,0.8
+				P: "BBoxMin", "Vector3D", "Vector", "",0,0,0
+				P: "BBoxMax", "Vector3D", "Vector", "",0,0,0
+				P: "Primary Visibility", "bool", "", "",1
+				P: "Casts Shadows", "bool", "", "",1
+				P: "Receive Shadows", "bool", "", "",1
+			}
+		}
+	}
+	ObjectType: "Material" {
+		Count: 1
+		PropertyTemplate: "FbxSurfaceLambert" {
+			Properties70:  {
+				P: "ShadingModel", "KString", "", "", "Lambert"
+				P: "MultiLayer", "bool", "", "",0
+				P: "EmissiveColor", "Color", "", "A",0,0,0
+				P: "EmissiveFactor", "Number", "", "A",1
+				P: "AmbientColor", "Color", "", "A",0.2,0.2,0.2
+				P: "AmbientFactor", "Number", "", "A",1
+				P: "DiffuseColor", "Color", "", "A",0.8,0.8,0.8
+				P: "DiffuseFactor", "Number", "", "A",1
+				P: "Bump", "Vector3D", "Vector", "",0,0,0
+				P: "NormalMap", "Vector3D", "Vector", "",0,0,0
+				P: "BumpFactor", "double", "Number", "",1
+				P: "TransparentColor", "Color", "", "A",0,0,0
+				P: "TransparencyFactor", "Number", "", "A",0
+				P: "DisplacementColor", "ColorRGB", "Color", "",0,0,0
+				P: "DisplacementFactor", "double", "Number", "",1
+				P: "VectorDisplacementColor", "ColorRGB", "Color", "",0,0,0
+				P: "VectorDisplacementFactor", "double", "Number", "",1
+			}
+		}
+	}
+}
+
+; Object properties
+;------------------------------------------------------------------
+
+Objects:  {
+	Geometry: 2830372787744, "Geometry::Scene", "Mesh" {
+		Vertices: *24 {
+			a: -50,-50,50,50,-50,50,-50,50,50,50,50,50,-50,50,-50,50,50,-50,-50,-50,-50,50,-50,-50
+		} 
+		PolygonVertexIndex: *36 {
+			a: 0,3,-3,0,1,-4,2,5,-5,2,3,-6,4,7,-7,4,5,-8,6,1,-1,6,7,-2,1,5,-4,1,7,-6,6,2,-5,6,0,-3
+		} 
+		GeometryVersion: 124
+		LayerElementNormal: 0 {
+			Version: 102
+			Name: "Normals"
+			MappingInformationType: "ByPolygonVertex"
+			ReferenceInformationType: "Direct"
+			Normals: *108 {
+				a: -0,0,1,-0,0,1,-0,0,1,-0,0,1,-0,0,1,-0,0,1,-0,1,0,-0,1,0,-0,1,0,-0,1,0,-0,1,0,-0,1,0,-0,0,-1,-0,0,-1,-0,0,-1,-0,0,-1,-0,0,-1,-0,0,-1,-0,-1,0,-0,-1,0,-0,-1,0,-0,-1,0,-0,-1,0,-0,-1,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,-1,0,0,-1,0,0,-1,0,0,-1,0,0,-1,0,0,-1,0,0
+			} 
+			NormalsW: *36 {
+				a: 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+			} 
+		}
+		LayerElementBinormal: 0 {
+			Version: 102
+			Name: "Binormals"
+			MappingInformationType: "ByPolygonVertex"
+			ReferenceInformationType: "Direct"
+			Binormals: *108 {
+				a: 0,1,-0,0,1,-0,0,1,-0,0,1,-0,0,1,-0,0,1,-0,0,0,-1,0,0,-1,0,0,-1,0,0,-1,0,0,-1,0,0,-1,0,-1,-0,0,-1,-0,0,-1,-0,0,-1,-0,0,-1,-0,0,-1,-0,-0,0,1,-0,0,1,-0,0,1,-0,0,1,-0,0,1,-0,0,1,-0,1,0,-0,1,0,-0,1,0,-0,1,0,-0,1,0,-0,1,0,0,1,-0,0,1,-0,0,1,-0,0,1,-0,0,1,-0,0,1,-0
+			} 
+			BinormalsW: *36 {
+				a: 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+			} 
+
+		}
+		LayerElementTangent: 0 {
+			Version: 102
+			Name: "Tangents"
+			MappingInformationType: "ByPolygonVertex"
+			ReferenceInformationType: "Direct"
+			Tangents: *108 {
+				a: 1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,-0,0,-1,-0,0,-1,-0,0,-1,-0,0,-1,-0,0,-1,-0,0,-1,-0,0,1,-0,0,1,-0,0,1,-0,0,1,-0,0,1,-0,0,1
+			} 
+			TangentsW: *36 {
+				a: 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1
+			} 
+		}
+		LayerElementUV: 0 {
+			Version: 101
+			Name: "UVSet0"
+			MappingInformationType: "ByPolygonVertex"
+			ReferenceInformationType: "IndexToDirect"
+			UV: *48 {
+				a: 0,0,1,0,0,1,1,1,0,1,1,1,0,1,1,1,0,0,1,0,0,0,1,0,0,0,0,1,1,1,1,0,0,0,0,1,1,1,1,0,0,0,0,1,1,1,1,0
+			} 
+			UVIndex: *36 {
+				a: 0,3,2,0,1,3,8,5,4,8,9,5,10,7,6,10,11,7,12,14,13,12,15,14,16,18,17,16,19,18,20,22,21,20,23,22
+			} 
+		}
+		LayerElementUV: 1 {
+			Version: 101
+			Name: "UVSet1"
+			MappingInformationType: "ByPolygonVertex"
+			ReferenceInformationType: "IndexToDirect"
+			UV: *48 {
+				a: 0.690986514091492,0.347164392471313,0.996658086776733,0.347164392471313,0.690986514091492,0.652835845947266,0.996658086776733,0.652835845947266,0.309727311134338,0.347164243459702,0.00405576638877392,0.347164243459702,0.347164243459702,0.652835845947266,0.652835845947266,0.652835845947266,0.309727311134338,0.652835845947266,0.00405576638877392,0.652835845947266,0.347164243459702,0.347164243459702,0.652835845947266,0.347164243459702,0.347164243459702,0.00405576638877392,0.347164243459702,0.309727311134338,0.652835845947266,0.309727311134338,0.652835845947266,0.00405576638877392,0.690272808074951,0.309727311134338,0.995944261550903,0.309727311134338,0.995944261550903,0.00405576638877392,0.690272808074951,0.00405576638877392,0.309727311134338,0.00405576638877392,0.00405576638877392,0.00405576638877392,0.00405576638877392,0.309727311134338,0.309727311134338,0.309727311134338
+			} 
+			UVIndex: *36 {
+				a: 0,3,2,0,1,3,8,5,4,8,9,5,10,7,6,10,11,7,12,14,13,12,15,14,16,18,17,16,19,18,20,22,21,20,23,22
+			} 
+		}
+		LayerElementMaterial: 0 {
+			Version: 101
+			Name: "Material"
+			MappingInformationType: "AllSame"
+			ReferenceInformationType: "IndexToDirect"
+			Materials: *1 {
+				a: 0
+			} 
+		}
+		Layer: 0 {
+			Version: 100
+			LayerElement:  {
+				Type: "LayerElementNormal"
+				TypedIndex: 0
+			}
+			LayerElement:  {
+				Type: "LayerElementBinormal"
+				TypedIndex: 0
+			}
+			LayerElement:  {
+				Type: "LayerElementTangent"
+				TypedIndex: 0
+			}
+			LayerElement:  {
+				Type: "LayerElementMaterial"
+				TypedIndex: 0
+			}
+			LayerElement:  {
+				Type: "LayerElementUV"
+				TypedIndex: 0
+			}
+		}
+		Layer: 1 {
+			Version: 100
+			LayerElement:  {
+				Type: "LayerElementUV"
+				TypedIndex: 1
+			}
+		}
+	}
+	Model: 2834581831888, "Model::Puddle_Far", "Null" {
+		Version: 232
+		Properties70:  {
+			P: "RotationOrder", "enum", "", "",4
+			P: "RotationActive", "bool", "", "",1
+			P: "InheritType", "enum", "", "",1
+			P: "ScalingMax", "Vector3D", "Vector", "",0,0,0
+			P: "Lcl Rotation", "Lcl Rotation", "", "A",-0,-120.000061035156,0
+			P: "Lcl Scaling", "Lcl Scaling", "", "A",1.00000023841858,1,1.00000023841858
+		}
+		Shading: Y
+		Culling: "CullingOff"
+	}
+	Model: 2834581839888, "Model::Waterfall", "Mesh" {
+		Version: 232
+		Properties70:  {
+			P: "RotationOrder", "enum", "", "",4
+			P: "RotationActive", "bool", "", "",1
+			P: "InheritType", "enum", "", "",1
+			P: "ScalingMax", "Vector3D", "Vector", "",0,0,0
+			P: "DefaultAttributeIndex", "int", "Integer", "",0
+			P: "Lcl Translation", "Lcl Translation", "", "A",1042.51098632813,-100,1650.80814361572
+			P: "Lcl Rotation", "Lcl Rotation", "", "A",90,0,-51.3695373535157
+			P: "Lcl Scaling", "Lcl Scaling", "", "A",0.96663635969162,0.76214998960495,2.48003792762756
+		}
+		Shading: W
+		Culling: "CullingOff"
+	}
+	Model: 2834581833888, "Model::Water__39_", "Mesh" {
+		Version: 232
+		Properties70:  {
+			P: "RotationOrder", "enum", "", "",4
+			P: "RotationActive", "bool", "", "",1
+			P: "InheritType", "enum", "", "",1
+			P: "ScalingMax", "Vector3D", "Vector", "",0,0,0
+			P: "DefaultAttributeIndex", "int", "Integer", "",0
+			P: "Lcl Translation", "Lcl Translation", "", "A",804.961395263672,0,2309.74349975586
+			P: "Lcl Rotation", "Lcl Rotation", "", "A",-0,-83.9005966186523,0
+			P: "Lcl Scaling", "Lcl Scaling", "", "A",2.7380747795105,0.5,2.12354779243469
+		}
+		Shading: W
+		Culling: "CullingOff"
+	}
+	Model: 2834581847888, "Model::Water__40_", "Mesh" {
+		Version: 232
+		Properties70:  {
+			P: "RotationOrder", "enum", "", "",4
+			P: "RotationActive", "bool", "", "",1
+			P: "InheritType", "enum", "", "",1
+			P: "ScalingMax", "Vector3D", "Vector", "",0,0,0
+			P: "DefaultAttributeIndex", "int", "Integer", "",0
+			P: "Lcl Translation", "Lcl Translation", "", "A",856.724643707275,0,2502.92892456055
+			P: "Lcl Rotation", "Lcl Rotation", "", "A",-0,-146.463775634766,0
+			P: "Lcl Scaling", "Lcl Scaling", "", "A",1.64977991580963,0.5,1.58388113975525
+		}
+		Shading: W
+		Culling: "CullingOff"
+	}
+	Model: 2822350679024, "Model::Water__41_", "Mesh" {
+		Version: 232
+		Properties70:  {
+			P: "RotationOrder", "enum", "", "",4
+			P: "RotationActive", "bool", "", "",1
+			P: "InheritType", "enum", "", "",1
+			P: "ScalingMax", "Vector3D", "Vector", "",0,0,0
+			P: "DefaultAttributeIndex", "int", "Integer", "",0
+			P: "Lcl Translation", "Lcl Translation", "", "A",723.042869567871,0,2486.98482513428
+			P: "Lcl Rotation", "Lcl Rotation", "", "A",-0,-179.441177368164,0
+			P: "Lcl Scaling", "Lcl Scaling", "", "A",2.10396456718445,0.5,2.55017423629761
+		}
+		Shading: W
+		Culling: "CullingOff"
+	}
+	Model: 2822350671024, "Model::Water__42_", "Mesh" {
+		Version: 232
+		Properties70:  {
+			P: "RotationOrder", "enum", "", "",4
+			P: "RotationActive", "bool", "", "",1
+			P: "InheritType", "enum", "", "",1
+			P: "ScalingMax", "Vector3D", "Vector", "",0,0,0
+			P: "DefaultAttributeIndex", "int", "Integer", "",0
+			P: "Lcl Translation", "Lcl Translation", "", "A",764.404630661011,0,2061.79046630859
+			P: "Lcl Rotation", "Lcl Rotation", "", "A",-0,170.601806640625,0
+			P: "Lcl Scaling", "Lcl Scaling", "", "A",1.25298142433167,0.5,1.18076431751251
+		}
+		Shading: W
+		Culling: "CullingOff"
+	}
+	Model: 2822350667024, "Model::Water__43_", "Mesh" {
+		Version: 232
+		Properties70:  {
+			P: "RotationOrder", "enum", "", "",4
+			P: "RotationActive", "bool", "", "",1
+			P: "InheritType", "enum", "", "",1
+			P: "ScalingMax", "Vector3D", "Vector", "",0,0,0
+			P: "DefaultAttributeIndex", "int", "Integer", "",0
+			P: "Lcl Translation", "Lcl Translation", "", "A",630.722951889038,0,2045.84636688232
+			P: "Lcl Rotation", "Lcl Rotation", "", "A",-0,-89.9580459594727,0
+			P: "Lcl Scaling", "Lcl Scaling", "", "A",1.9396812915802,0.5,0.810458779335022
+		}
+		Shading: W
+		Culling: "CullingOff"
+	}
+	Model: 2822349556688, "Model::Water__44_", "Mesh" {
+		Version: 232
+		Properties70:  {
+			P: "RotationOrder", "enum", "", "",4
+			P: "RotationActive", "bool", "", "",1
+			P: "InheritType", "enum", "", "",1
+			P: "ScalingMax", "Vector3D", "Vector", "",0,0,0
+			P: "DefaultAttributeIndex", "int", "Integer", "",0
+			P: "Lcl Translation", "Lcl Translation", "", "A",680.753183364868,0,2135.96935272217
+			P: "Lcl Rotation", "Lcl Rotation", "", "A",-0,-31.2018852233887,0
+			P: "Lcl Scaling", "Lcl Scaling", "", "A",1.47541975975037,0.5,1.03395342826843
+		}
+		Shading: W
+		Culling: "CullingOff"
+	}
+	Model: 2822349558688, "Model::Water__54_", "Mesh" {
+		Version: 232
+		Properties70:  {
+			P: "RotationOrder", "enum", "", "",4
+			P: "RotationActive", "bool", "", "",1
+			P: "InheritType", "enum", "", "",1
+			P: "ScalingMax", "Vector3D", "Vector", "",0,0,0
+			P: "DefaultAttributeIndex", "int", "Integer", "",0
+			P: "Lcl Translation", "Lcl Translation", "", "A",867.932319641113,0,2448.16226959229
+			P: "Lcl Rotation", "Lcl Rotation", "", "A",-0,-69.3358917236328,0
+			P: "Lcl Scaling", "Lcl Scaling", "", "A",2.17342019081116,0.5,1.39381897449493
+		}
+		Shading: W
+		Culling: "CullingOff"
+	}
+	Model: 2830288419472, "Model::Water__55_", "Mesh" {
+		Version: 232
+		Properties70:  {
+			P: "RotationOrder", "enum", "", "",4
+			P: "RotationActive", "bool", "", "",1
+			P: "InheritType", "enum", "", "",1
+			P: "ScalingMax", "Vector3D", "Vector", "",0,0,0
+			P: "DefaultAttributeIndex", "int", "Integer", "",0
+			P: "Lcl Translation", "Lcl Translation", "", "A",726.851511001587,0,1631.86073303223
+			P: "Lcl Rotation", "Lcl Rotation", "", "A",-0,-77.2537994384766,0
+			P: "Lcl Scaling", "Lcl Scaling", "", "A",0.96663635969162,0.5,2.673419713974
+		}
+		Shading: W
+		Culling: "CullingOff"
+	}
+	Model: 2822346849008, "Model::Water__56_", "Mesh" {
+		Version: 232
+		Properties70:  {
+			P: "RotationOrder", "enum", "", "",4
+			P: "RotationActive", "bool", "", "",1
+			P: "InheritType", "enum", "", "",1
+			P: "ScalingMax", "Vector3D", "Vector", "",0,0,0
+			P: "DefaultAttributeIndex", "int", "Integer", "",0
+			P: "Lcl Translation", "Lcl Translation", "", "A",932.977771759033,0,1628.39279174805
+			P: "Lcl Rotation", "Lcl Rotation", "", "A",-0,-104.341819763184,0
+			P: "Lcl Scaling", "Lcl Scaling", "", "A",0.96663635969162,0.5,2.12041544914246
+		}
+		Shading: W
+		Culling: "CullingOff"
+	}
+	Model: 2819909642000, "Model::Water__58_", "Mesh" {
+		Version: 232
+		Properties70:  {
+			P: "RotationOrder", "enum", "", "",4
+			P: "RotationActive", "bool", "", "",1
+			P: "InheritType", "enum", "", "",1
+			P: "ScalingMax", "Vector3D", "Vector", "",0,0,0
+			P: "DefaultAttributeIndex", "int", "Integer", "",0
+			P: "Lcl Translation", "Lcl Translation", "", "A",631.992292404175,0,1760.80627441406
+			P: "Lcl Rotation", "Lcl Rotation", "", "A",-0,-3.0226743221283,0
+			P: "Lcl Scaling", "Lcl Scaling", "", "A",1.46196627616882,0.5,2.673419713974
+		}
+		Shading: W
+		Culling: "CullingOff"
+	}
+	Model: 2834909540160, "Model::Water__59_", "Mesh" {
+		Version: 232
+		Properties70:  {
+			P: "RotationOrder", "enum", "", "",4
+			P: "RotationActive", "bool", "", "",1
+			P: "InheritType", "enum", "", "",1
+			P: "ScalingMax", "Vector3D", "Vector", "",0,0,0
+			P: "DefaultAttributeIndex", "int", "Integer", "",0
+			P: "Lcl Translation", "Lcl Translation", "", "A",659.607744216919,0,1960.4621887207
+			P: "Lcl Rotation", "Lcl Rotation", "", "A",-0,-144.653091430664,0
+			P: "Lcl Scaling", "Lcl Scaling", "", "A",1.19124388694763,0.5,2.41854572296143
+		}
+		Shading: W
+		Culling: "CullingOff"
+	}
+	Model: 2834909526160, "Model::Water__60_", "Mesh" {
+		Version: 232
+		Properties70:  {
+			P: "RotationOrder", "enum", "", "",4
+			P: "RotationActive", "bool", "", "",1
+			P: "InheritType", "enum", "", "",1
+			P: "ScalingMax", "Vector3D", "Vector", "",0,0,0
+			P: "DefaultAttributeIndex", "int", "Integer", "",0
+			P: "Lcl Translation", "Lcl Translation", "", "A",548.340654373169,0,1834.98458862305
+			P: "Lcl Rotation", "Lcl Rotation", "", "A",-0,-91.0514755249023,0
+			P: "Lcl Scaling", "Lcl Scaling", "", "A",1.47541975975037,0.5,1.03395342826843
+		}
+		Shading: W
+		Culling: "CullingOff"
+	}
+	Model: 2834909552160, "Model::Water__61_", "Mesh" {
+		Version: 232
+		Properties70:  {
+			P: "RotationOrder", "enum", "", "",4
+			P: "RotationActive", "bool", "", "",1
+			P: "InheritType", "enum", "", "",1
+			P: "ScalingMax", "Vector3D", "Vector", "",0,0,0
+			P: "DefaultAttributeIndex", "int", "Integer", "",0
+			P: "Lcl Translation", "Lcl Translation", "", "A",790.28639793396,0,2158.38432312012
+			P: "Lcl Rotation", "Lcl Rotation", "", "A",-0,139.496231079102,0
+			P: "Lcl Scaling", "Lcl Scaling", "", "A",1.41198468208313,0.5,1.55424010753632
+		}
+		Shading: W
+		Culling: "CullingOff"
+	}
+	Model: 2834909532160, "Model::Water__62_", "Mesh" {
+		Version: 232
+		Properties70:  {
+			P: "RotationOrder", "enum", "", "",4
+			P: "RotationActive", "bool", "", "",1
+			P: "InheritType", "enum", "", "",1
+			P: "ScalingMax", "Vector3D", "Vector", "",0,0,0
+			P: "DefaultAttributeIndex", "int", "Integer", "",0
+			P: "Lcl Translation", "Lcl Translation", "", "A",744.992971420288,0,1989.34726715088
+			P: "Lcl Rotation", "Lcl Rotation", "", "A",-0,144.515777587891,0
+			P: "Lcl Scaling", "Lcl Scaling", "", "A",1.76056683063507,0.5,0.666410148143768
+		}
+		Shading: W
+		Culling: "CullingOff"
+	}
+	Model: 2834909542160, "Model::Water__63_", "Mesh" {
+		Version: 232
+		Properties70:  {
+			P: "RotationOrder", "enum", "", "",4
+			P: "RotationActive", "bool", "", "",1
+			P: "InheritType", "enum", "", "",1
+			P: "ScalingMax", "Vector3D", "Vector", "",0,0,0
+			P: "DefaultAttributeIndex", "int", "Integer", "",0
+			P: "Lcl Translation", "Lcl Translation", "", "A",895.083808898926,0,2259.71355438232
+			P: "Lcl Rotation", "Lcl Rotation", "", "A",-0,118.570037841797,0
+			P: "Lcl Scaling", "Lcl Scaling", "", "A",2.21469807624817,0.5,1.28649032115936
+		}
+		Shading: W
+		Culling: "CullingOff"
+	}
+	Material: 2834911378032, "Material::WaterDeep", "" {
+		Version: 102
+		ShadingModel: "lambert"
+		MultiLayer: 0
+		Properties70:  {
+			P: "AmbientColor", "Color", "", "A",0,0,0
+			P: "DiffuseColor", "Color", "", "A",0.217515707015991,0.485526382923126,0.73800003528595
+			P: "BumpFactor", "double", "Number", "",0
+			P: "Emissive", "Vector3D", "Vector", "",0,0,0
+			P: "Ambient", "Vector3D", "Vector", "",0,0,0
+			P: "Diffuse", "Vector3D", "Vector", "",0.217515707015991,0.485526382923126,0.73800003528595
+			P: "Opacity", "double", "Number", "",1
+		}
+	}
+}
+
+; Object connections
+;------------------------------------------------------------------
+
+Connections:  {
+	
+	;Model::Puddle_Far, Model::RootNode
+	C: "OO",2834581831888,0
+	
+	;Model::Waterfall, Model::Puddle_Far
+	C: "OO",2834581839888,2834581831888
+	
+	;Model::Water__39_, Model::Puddle_Far
+	C: "OO",2834581833888,2834581831888
+	
+	;Model::Water__40_, Model::Puddle_Far
+	C: "OO",2834581847888,2834581831888
+	
+	;Model::Water__41_, Model::Puddle_Far
+	C: "OO",2822350679024,2834581831888
+	
+	;Model::Water__42_, Model::Puddle_Far
+	C: "OO",2822350671024,2834581831888
+	
+	;Model::Water__43_, Model::Puddle_Far
+	C: "OO",2822350667024,2834581831888
+	
+	;Model::Water__44_, Model::Puddle_Far
+	C: "OO",2822349556688,2834581831888
+	
+	;Model::Water__54_, Model::Puddle_Far
+	C: "OO",2822349558688,2834581831888
+	
+	;Model::Water__55_, Model::Puddle_Far
+	C: "OO",2830288419472,2834581831888
+	
+	;Model::Water__56_, Model::Puddle_Far
+	C: "OO",2822346849008,2834581831888
+	
+	;Model::Water__58_, Model::Puddle_Far
+	C: "OO",2819909642000,2834581831888
+	
+	;Model::Water__59_, Model::Puddle_Far
+	C: "OO",2834909540160,2834581831888
+	
+	;Model::Water__60_, Model::Puddle_Far
+	C: "OO",2834909526160,2834581831888
+	
+	;Model::Water__61_, Model::Puddle_Far
+	C: "OO",2834909552160,2834581831888
+	
+	;Model::Water__62_, Model::Puddle_Far
+	C: "OO",2834909532160,2834581831888
+	
+	;Model::Water__63_, Model::Puddle_Far
+	C: "OO",2834909542160,2834581831888
+	
+	;Material::WaterDeep, Model::Waterfall
+	C: "OO",2834911378032,2834581839888
+	
+	;Geometry::Scene, Model::Waterfall
+	C: "OO",2830372787744,2834581839888
+	
+	;Material::WaterDeep, Model::Water__39_
+	C: "OO",2834911378032,2834581833888
+	
+	;Geometry::Scene, Model::Water__39_
+	C: "OO",2830372787744,2834581833888
+	
+	;Material::WaterDeep, Model::Water__40_
+	C: "OO",2834911378032,2834581847888
+	
+	;Geometry::Scene, Model::Water__40_
+	C: "OO",2830372787744,2834581847888
+	
+	;Material::WaterDeep, Model::Water__41_
+	C: "OO",2834911378032,2822350679024
+	
+	;Geometry::Scene, Model::Water__41_
+	C: "OO",2830372787744,2822350679024
+	
+	;Material::WaterDeep, Model::Water__42_
+	C: "OO",2834911378032,2822350671024
+	
+	;Geometry::Scene, Model::Water__42_
+	C: "OO",2830372787744,2822350671024
+	
+	;Material::WaterDeep, Model::Water__43_
+	C: "OO",2834911378032,2822350667024
+	
+	;Geometry::Scene, Model::Water__43_
+	C: "OO",2830372787744,2822350667024
+	
+	;Material::WaterDeep, Model::Water__44_
+	C: "OO",2834911378032,2822349556688
+	
+	;Geometry::Scene, Model::Water__44_
+	C: "OO",2830372787744,2822349556688
+	
+	;Material::WaterDeep, Model::Water__54_
+	C: "OO",2834911378032,2822349558688
+	
+	;Geometry::Scene, Model::Water__54_
+	C: "OO",2830372787744,2822349558688
+	
+	;Material::WaterDeep, Model::Water__55_
+	C: "OO",2834911378032,2830288419472
+	
+	;Geometry::Scene, Model::Water__55_
+	C: "OO",2830372787744,2830288419472
+	
+	;Material::WaterDeep, Model::Water__56_
+	C: "OO",2834911378032,2822346849008
+	
+	;Geometry::Scene, Model::Water__56_
+	C: "OO",2830372787744,2822346849008
+	
+	;Material::WaterDeep, Model::Water__58_
+	C: "OO",2834911378032,2819909642000
+	
+	;Geometry::Scene, Model::Water__58_
+	C: "OO",2830372787744,2819909642000
+	
+	;Material::WaterDeep, Model::Water__59_
+	C: "OO",2834911378032,2834909540160
+	
+	;Geometry::Scene, Model::Water__59_
+	C: "OO",2830372787744,2834909540160
+	
+	;Material::WaterDeep, Model::Water__60_
+	C: "OO",2834911378032,2834909526160
+	
+	;Geometry::Scene, Model::Water__60_
+	C: "OO",2830372787744,2834909526160
+	
+	;Material::WaterDeep, Model::Water__61_
+	C: "OO",2834911378032,2834909552160
+	
+	;Geometry::Scene, Model::Water__61_
+	C: "OO",2830372787744,2834909552160
+	
+	;Material::WaterDeep, Model::Water__62_
+	C: "OO",2834911378032,2834909532160
+	
+	;Geometry::Scene, Model::Water__62_
+	C: "OO",2830372787744,2834909532160
+	
+	;Material::WaterDeep, Model::Water__63_
+	C: "OO",2834911378032,2834909542160
+	
+	;Geometry::Scene, Model::Water__63_
+	C: "OO",2830372787744,2834909542160
+}
+;Takes section
+;----------------------------------------------------
+
+Takes:  {
+	Current: ""
+}

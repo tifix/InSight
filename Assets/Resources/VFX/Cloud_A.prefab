@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8355035194068518839}
   - component: {fileID: 8355035194068518838}
   - component: {fileID: 8355035194068518841}
+  - component: {fileID: 4660869727392103295}
   m_Layer: 0
   m_Name: Cloud_A
   m_TagString: Untagged
@@ -41,7 +42,7 @@ VisualEffect:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8355035194068518840}
   m_Enabled: 1
-  m_Asset: {fileID: 8926484042661614526, guid: da8bf1efec8925d42a14c10f2918e1ff, type: 3}
+  m_Asset: {fileID: 8926484042661614526, guid: 67c143a38afa3e843bfdf702ae1ebd01, type: 3}
   m_InitialEventName: OnPlay
   m_InitialEventNameOverriden: 0
   m_StartSeed: 0
@@ -142,3 +143,16 @@ VFXRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &4660869727392103295
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8355035194068518840}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 0, z: 0}

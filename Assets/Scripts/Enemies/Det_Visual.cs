@@ -13,12 +13,12 @@ public class Det_Visual : Detector
         if (detection_state == det_states.undetected || detection_state == det_states.suspected)
         {
             detection_state = det_states.suspected;
-            cur_detection += Player.instance.pDetection.mulVisualCur * Time.fixedDeltaTime * detGain;
+            if (!Player.instance.pDetection.isDetectionGainFrozen) cur_detection += Player.instance.pDetection.mulVisualCur * Time.fixedDeltaTime * detGain;
         }
         //when tracking, build up additional detection points 
         if (detection_state == det_states.tracked)
         {
-            cur_detection += Player.instance.pDetection.mulVisualCur * Time.fixedDeltaTime * detGainTracked;
+            if (!Player.instance.pDetection.isDetectionGainFrozen) cur_detection += Player.instance.pDetection.mulVisualCur * Time.fixedDeltaTime * detGainTracked;
         }
 
         //upon reaching detection threshhold - set status to detecting
