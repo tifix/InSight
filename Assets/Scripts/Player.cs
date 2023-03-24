@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
         public Vector3  movement_direction, dir_memory;
         public Vector3  surfaceNormal;
         public float    slope_limit =   30;
+        public float meshRotationStrength = 0.05f;
         [Space(2)]
         //Speed balancing values
         public float    tapMaxDuration = 0.5f, tapInitialisedTimestamp = 0f, tapForce=20;
@@ -69,6 +70,7 @@ public class Player : MonoBehaviour
 
                         public  ParticleSystem      VFX_DetectFlash;
     [SerializeField]    private ParticleSystem      VFX_DeathFlash;
+    [SerializeField]    private Animator            animator;
 
     #region monobehaviour integrations
 
@@ -88,7 +90,7 @@ public class Player : MonoBehaviour
         UI_Handler.instance.detection_b.value = pDetection.cur_Detection;
 
         //Mesh lil movements
-        mesh_child.rotation = Quaternion.LookRotation(mesh_child.forward + VectorFlattenY(pMovement.movement_direction * 0.06f),Vector3.up);
+        mesh_child.rotation = Quaternion.LookRotation(mesh_child.forward + VectorFlattenY(pMovement.movement_direction * pMovement.meshRotationStrength),Vector3.up);
         Quaternion q1 = Quaternion.LookRotation(head_child.forward + cam_cont.transform.right * 0.09f, Vector3.up);    
         head_child.rotation = q1;
 
@@ -220,6 +222,8 @@ public class Player : MonoBehaviour
         pMovement.movement_direction = GetSurfaceAdjustedForward(InputVector);
         if (pMovement.movement_direction != Vector3.zero) pMovement.dir_memory = pMovement.movement_direction;
 
+
+
         //applying the force depending on the current movement mode and maximum speed values
         Vector3 applied_force = Vector3.zero;
         if (current_movement == Move_mode.sneaking && rb.velocity.magnitude < pMovement.max_sneak_speed) applied_force = 1000 * pMovement.sneak_speed * Time.fixedDeltaTime * pMovement.movement_direction;
@@ -229,8 +233,26 @@ public class Player : MonoBehaviour
         
         rb.AddForce(applied_force);
 
+
+        animator.SetBool("inAir", !ground_sensor.detecting);
+
+
         //Jumping functionality
-        if (Input.GetKeyDown(KeyCode.Space) && ground_sensor.detecting) { Debug.Log("jump"); rb.AddForce(Vector3.up * pMovement.jump_force); StartCoroutine(FallingInStyle()); }
+        if (Input.GetKeyDown(KeyCode.Space) && ground_sensor.detecting) 
+        { 
+            Debug.Log("jump"); 
+            rb.AddForce(Vector3.up * pMovement.jump_force);
+            animator.SetTrigger("Jump");
+
+            StartCoroutine(FallingInStyle()); 
+        }
+        //animator.transform.rotation
+
+        //Updating animations according to movement inputs
+        animator.SetFloat("movementY", Mathf.Abs(InputVector.normalized.magnitude));
+        //animator.SetFloat("movementY", InputVector.y);
+
+
 
         //refresh movement modes
         if (InputVector.magnitude < Mathf.Epsilon && ground_sensor.detecting) { current_movement = Move_mode.still; return; } //if grounded and not moving -still
@@ -251,6 +273,7 @@ public class Player : MonoBehaviour
             if (rb.velocity.y < 0.0f) { rb.velocity += (pMovement.fall_multiplier - 1) * Physics.gravity.y * Time.fixedDeltaTime * Vector3.up; }
             if (ground_sensor.detecting) break;
         }
+        //animator.SetTrigger("Landed");
     }
     #endregion
 
