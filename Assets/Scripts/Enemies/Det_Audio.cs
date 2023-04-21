@@ -126,7 +126,7 @@ public class Det_Audio : Detector
             Debug.LogWarning("Intruder!");
             NowDetected.Invoke();
             UI_Handler.instance.SetDetectionColorDet();
-            DataHolder.instance.AddDetection();
+            GameManager.instance.AddDetection();
             detection_state = det_states.detected;
         }
 

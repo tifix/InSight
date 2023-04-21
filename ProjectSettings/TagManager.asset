@@ -17,12 +17,12 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - Ground
+  - Wall
   - PostProcessing
   - Player
   - EnemySense
-  - Terrain
+  - 
   - Obstacle
   - Ceiling
   - Smell
@@ -31,8 +31,8 @@ TagManager:
   - 
   - InvisibleToCameras
   - 
-  - 
-  - 
+  - Greenery
+  - PlayerCamera
   - 
   - 
   - 

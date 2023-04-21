@@ -28,8 +28,8 @@ Material:
   - TransparentBackface
   - RayTracingPrepass
   - MOTIONVECTORS
-  - DecalProjectorForwardEmissive
   - DecalMeshForwardEmissive
+  - DecalProjectorForwardEmissive
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:

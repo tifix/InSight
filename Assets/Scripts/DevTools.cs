@@ -3,17 +3,15 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
-public class DevTools : MonoBehaviour
+[System.Serializable, ExecuteInEditMode]
+public class DevTools
 {
     public bool devToolsEnabled  = false;
     public List<Transform> checkpoints;
-    public static DevTools instance;
+    public Transform warpHere = null;
+    [Range(0, 2f)] public float timeScale = 1;
+    [Tooltip("Hide all enemies for simpler exploration")] public bool isEnemiesDisabled = false;
 
-    public void Awake()
-    {
-        if (instance == null) instance = this; else Destroy(this);
-    }
     public void ToggleDetections(bool targetState)
     {
         if (!devToolsEnabled) return;
@@ -21,17 +19,19 @@ public class DevTools : MonoBehaviour
         else Player.instance.pDetection.mulGlobal = 0;
     }
 
-    //[SerializeField]
-    public void WarpPlayer(Transform destination)
-    {
-        if (!devToolsEnabled) return;
-        Player.instance.transform.position = destination.transform.position;
-    }
     public void WarpViaScrollList(Int32 value) 
     {
-        WarpPlayer(checkpoints[value]);   
+        GameManager.instance.WarpSmart(checkpoints[value]);   
     }
 
+    public void RemoveEnemies() 
+    {
+        try
+        {
+            GameObject.FindObjectOfType<EnemyCore>().gameObject.transform.parent.gameObject.SetActive(false);
+        }
+        catch { }
+    }
 
     [SerializeField]
     private void ToggleAllRocks(bool targetState)

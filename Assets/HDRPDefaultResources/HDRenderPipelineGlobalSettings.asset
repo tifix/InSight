@@ -16,7 +16,7 @@ MonoBehaviour:
   m_LookDevVolumeProfile: {fileID: 11400000, guid: 66b4ccef760112741982ea90c56ec853, type: 2}
   m_RenderingPathDefaultCameraFrameSettings:
     bitDatas:
-      data1: 140668768878429
+      data1: 140667695136605
       data2: 4539628434053103640
     lodBias: 1
     lodBiasMode: 0
@@ -67,7 +67,7 @@ MonoBehaviour:
   afterPostProcessCustomPostProcesses: []
   beforeTAACustomPostProcesses: []
   lightLayerName0: Light Layer default
-  lightLayerName1: Light Layer 1
+  lightLayerName1: IgnoreSunLight
   lightLayerName2: Light Layer 2
   lightLayerName3: Light Layer 3
   lightLayerName4: Light Layer 4

@@ -122,7 +122,7 @@ public class Detector : MonoBehaviour
 
     protected bool RaycastToPlayer() 
     {
-        int mask = LayerMask.GetMask("Enemy", "EnemySense", "Smell", "Objective");
+        int mask = LayerMask.GetMask("Enemy", "EnemySense", "Smell", "Objective", "Ignore Raycast");
         mask = ~mask;
         return RaycastToPlayer(mask);
     }

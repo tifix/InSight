@@ -27,7 +27,7 @@ public class Det_Visual : Detector
             Debug.LogWarning("Intruder!");
             NowDetected.Invoke();
             UI_Handler.instance.SetDetectionColorDet();
-            DataHolder.instance.AddDetection();
+            GameManager.instance.AddDetection();
             detection_state = det_states.detected;
         }
         
@@ -43,7 +43,7 @@ public class Det_Visual : Detector
     {
         if (vision_cone.detecting)
         {
-            int mask = LayerMask.GetMask("Enemy", "EnemySense", "Smell", "Objective");
+            int mask = LayerMask.GetMask("Enemy", "EnemySense", "Smell", "Objective", "Ignore Raycast");
             mask = ~mask;
 
             if (RaycastToPlayer(mask))

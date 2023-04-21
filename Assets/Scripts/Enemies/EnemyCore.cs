@@ -7,12 +7,14 @@ using UnityEngine.AI;
 
 public class EnemyCore : MonoBehaviour
 {
+    
     [SerializeField]                                            private enemy_state     cur_state = enemy_state.idle;
     [Tooltip("What actions the AI can perform in what states")] public E_Behaviour[]    Behaviours;
     [Space]
     [HideInInspector]                                           public Detector         detector;
     [Tooltip("base movement speed, increased when tracking")]   public readonly float   moveSpeed = 3.5f;
                                                                 public enum enemy_state {idle, suspicious, flashDetected,tracking, attacking, unloaded};
+                                                                public Vector3 initPosition;
 
     #region monobehaviour integrations
     private void Awake()
@@ -29,8 +31,9 @@ public class EnemyCore : MonoBehaviour
         detector.NowDetected.AddListener(SwitchToDetecting);
         detector.StartTracking.AddListener(SwitchToTracking);
         detector.GiveUpTracking.AddListener(SwitchToIdle);      detector.KillInRange.AddListener(SwitchToAttacking);
-        detector.GiveUpTracking.AddListener(EndEngaging); 
+        detector.GiveUpTracking.AddListener(EndEngaging);
         //StartCoroutine(UnloadIfVeryFar(200f, 1f));
+        initPosition = transform.position;
     }
 
     private IEnumerator UnloadIfVeryFar(float distance, float interval) 
@@ -67,6 +70,7 @@ public class EnemyCore : MonoBehaviour
     {
         detector.currentlyEngaging = false;
         detector.cur_detection = 0;
+        initPosition = transform.position;
         SwitchToIdle();
     }
 

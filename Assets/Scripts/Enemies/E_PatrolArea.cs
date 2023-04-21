@@ -23,7 +23,7 @@ public class E_PatrolArea : E_Behaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q) && DataHolder.instance.cheats.devToolsEnabled) SetDestinationToMousePosition();  //bait enemies with 'Q'
+        if (Input.GetKeyDown(KeyCode.Q) && GameManager.instance.cheats.devToolsEnabled) SetDestinationToMousePosition();  //bait enemies with 'Q'
     }
 
     Vector3 DeterminePatrolDestination() 
@@ -44,7 +44,7 @@ public class E_PatrolArea : E_Behaviour
                                             Random.Range(patrol_zone.bounds.min.z, patrol_zone.bounds.max.z));
 
             //destination would not be viable if point is generated in a wall, or on a botomless pit
-            LayerMask mask = LayerMask.GetMask("Terrain");
+            LayerMask mask = LayerMask.GetMask("Ground");
             Collider[] overlappedcols = Physics.OverlapSphere(destination, 0.1f, mask);
 
             if (overlappedcols.Length < 1) { is_viable = false; }

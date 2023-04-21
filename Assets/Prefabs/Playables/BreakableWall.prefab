@@ -240,7 +240,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inRange: 0
+  isAutomatic: 1
   wasUsed: 0
+  singleUse: 0
   interaction:
     m_PersistentCalls:
       m_Calls:
@@ -251,6 +253,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 3359401075421739294}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Animator, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: DataHolder, Assembly-CSharp
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -268,7 +282,7 @@ GameObject:
   - component: {fileID: 3359401075421739294}
   m_Layer: 11
   m_Name: BreakableWall
-  m_TagString: Untagged
+  m_TagString: FallingRocks
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -288,6 +302,7 @@ Transform:
   - {fileID: 3726064316064709293}
   - {fileID: 8396444884138028448}
   - {fileID: 5758088409883274972}
+  - {fileID: 8017744145520171748}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -311,3 +326,67 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!1001 &1533302594818128811
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 2
+    m_TransformParent: {fileID: 8046132036447579379}
+    m_Modifications:
+    - target: {fileID: 5157099303167686916, guid: 93d3d9bb2fb79564591f73eced44aaa7, type: 3}
+      propertyPath: m_Name
+      value: InteractibleHighlight
+      objectReference: {fileID: 0}
+    - target: {fileID: 8792114182169502031, guid: 93d3d9bb2fb79564591f73eced44aaa7, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8792114182169502031, guid: 93d3d9bb2fb79564591f73eced44aaa7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.21
+      objectReference: {fileID: 0}
+    - target: {fileID: 8792114182169502031, guid: 93d3d9bb2fb79564591f73eced44aaa7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.81
+      objectReference: {fileID: 0}
+    - target: {fileID: 8792114182169502031, guid: 93d3d9bb2fb79564591f73eced44aaa7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.039
+      objectReference: {fileID: 0}
+    - target: {fileID: 8792114182169502031, guid: 93d3d9bb2fb79564591f73eced44aaa7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.85612404
+      objectReference: {fileID: 0}
+    - target: {fileID: 8792114182169502031, guid: 93d3d9bb2fb79564591f73eced44aaa7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8792114182169502031, guid: 93d3d9bb2fb79564591f73eced44aaa7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.5167704
+      objectReference: {fileID: 0}
+    - target: {fileID: 8792114182169502031, guid: 93d3d9bb2fb79564591f73eced44aaa7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8792114182169502031, guid: 93d3d9bb2fb79564591f73eced44aaa7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8792114182169502031, guid: 93d3d9bb2fb79564591f73eced44aaa7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 62.232
+      objectReference: {fileID: 0}
+    - target: {fileID: 8792114182169502031, guid: 93d3d9bb2fb79564591f73eced44aaa7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_AddedGameObjects: []
+  m_SourcePrefab: {fileID: 100100000, guid: 93d3d9bb2fb79564591f73eced44aaa7, type: 3}
+--- !u!4 &8017744145520171748 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8792114182169502031, guid: 93d3d9bb2fb79564591f73eced44aaa7, type: 3}
+  m_PrefabInstance: {fileID: 1533302594818128811}
+  m_PrefabAsset: {fileID: 0}

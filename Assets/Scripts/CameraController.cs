@@ -54,7 +54,7 @@ public class CameraController : MonoBehaviour
         Transform T_cam= Camera.main.transform;
         Vector3 temp = T_cam.localPosition;
 
-        if(Physics.Raycast(transform.position, T_cam.position - transform.position, out RaycastHit hit, 2.7f, LayerMask.GetMask("Terrain")))
+        if(Physics.Raycast(transform.position, T_cam.position - transform.position, out RaycastHit hit, 2.7f, LayerMask.GetMask("Wall","Ground")))
         {
             temp.x = -hit.distance;
             Camera.main.transform.localPosition = temp;

@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿/*
+ * Used for detecting specifically smell nodes
+ */
 using System.Collections.Generic;
 using UnityEngine;
 
