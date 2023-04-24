@@ -46,7 +46,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 111.408455
+  m_Intensity: 79.57747
   m_Range: 9.1666565
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -91,10 +91,10 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 1
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 7.68e-43, y: 1.41727e-40, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
-  m_ShadowRadius: 0.25
+  m_ShadowRadius: 0.72
   m_ShadowAngle: 0
 --- !u!114 &7729176318394089472
 MonoBehaviour:
@@ -223,6 +223,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 7729176318394089479}
     m_Modifications:
     - target: {fileID: 3240415376855996726, guid: 1c47253e7d90e914dbbfa028c607f08e, type: 3}
@@ -302,6 +303,7 @@ PrefabInstance:
       value: 30
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 1c47253e7d90e914dbbfa028c607f08e, type: 3}
 --- !u!4 &1387908427113763055 stripped
 Transform:

@@ -7,6 +7,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.HighDefinition;
 
 public class UI_Handler : MonoBehaviour
 {
@@ -25,6 +27,8 @@ public class UI_Handler : MonoBehaviour
     [SerializeField] Color clr_tracked = Color.HSVToRGB(260f/ 360, 0.87f, 0.72f);
     [SerializeField] Transform DetectingEnemy;
     public GameObject sunReal, sunCave;
+    [Range(-3,3)]public float Brightness=1;
+    public Volume caveVolume;
 
     void Start()
     {
@@ -46,6 +50,16 @@ public class UI_Handler : MonoBehaviour
         
         if (Player.instance.pDetection.current_detectors.Count > 0) { SetDirectionDetection(DetectingEnemy.position); }
         else DirectionalGizmo.GetComponent<Animator>().SetTrigger("GizmoHide");
+
+        if (Brightness != 1)
+        {
+            VolumeProfile profile = caveVolume.sharedProfile; 
+            if (!profile.TryGet<Exposure>(out var exposure))
+            {
+                exposure = profile.Add<Exposure>(false);
+            }
+            exposure.compensation.value=1.5f + Brightness;
+        }
     }
 
 
@@ -104,7 +118,12 @@ public class UI_Handler : MonoBehaviour
     {
         audioMixer.SetFloat("volumeMaster", volume);
     }
-    public void ShowVictoryScreen() 
+    public void SetBrightness(float _bright)
+    {
+        Brightness = _bright;
+    }
+
+        public void ShowVictoryScreen() 
     {
         UI_Victory.SetActive(true);
         counterVictoryObjectives.text = GameManager.instance.cur_data.totalObjectives.ToString();
