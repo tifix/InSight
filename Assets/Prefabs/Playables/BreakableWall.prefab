@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5758088409883274972}
   - component: {fileID: 8838703991704479606}
   - component: {fileID: 9009962318246364558}
-  m_Layer: 11
+  m_Layer: 7
   m_Name: LeverMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 7211973426309705692}
   - component: {fileID: 1440905289100473007}
   - component: {fileID: 3192149252255969317}
-  m_Layer: 11
+  m_Layer: 7
   m_Name: RockMesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -192,7 +192,7 @@ GameObject:
   - component: {fileID: 3726064316064709293}
   - component: {fileID: 5001965754892953074}
   - component: {fileID: 2388353089031076385}
-  m_Layer: 11
+  m_Layer: 7
   m_Name: Breakable side
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -242,7 +242,7 @@ MonoBehaviour:
   inRange: 0
   isAutomatic: 1
   wasUsed: 0
-  singleUse: 0
+  singleUse: 1
   interaction:
     m_PersistentCalls:
       m_Calls:
@@ -259,12 +259,24 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: DataHolder, Assembly-CSharp
-        m_MethodName: 
-        m_Mode: 1
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: SetAnimationTrigger
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Using
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5969188051881607855}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -280,7 +292,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8046132036447579379}
   - component: {fileID: 3359401075421739294}
-  m_Layer: 11
+  m_Layer: 7
   m_Name: BreakableWall
   m_TagString: FallingRocks
   m_Icon: {fileID: 0}
@@ -304,7 +316,7 @@ Transform:
   - {fileID: 5758088409883274972}
   - {fileID: 8017744145520171748}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &3359401075421739294
 Animator:
@@ -385,6 +397,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 93d3d9bb2fb79564591f73eced44aaa7, type: 3}
+--- !u!1 &5969188051881607855 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5157099303167686916, guid: 93d3d9bb2fb79564591f73eced44aaa7, type: 3}
+  m_PrefabInstance: {fileID: 1533302594818128811}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8017744145520171748 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8792114182169502031, guid: 93d3d9bb2fb79564591f73eced44aaa7, type: 3}

@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     //initialisation
     public enum area { hub, grotto, peaks, canyon};
     public static GameManager instance;
-
+    
 
     //
     [Header("Game state")]
@@ -65,6 +65,8 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         if (Player.instance == null) Player.instance = GameObject.Find("Player").GetComponent<Player>();
+        if (Input.GetKeyDown(KeyCode.K)) Player.instance.Die("Debug killing the player!");
+        if (Input.GetKeyDown(KeyCode.N)) CollectLoreNote("I'm testing this nooow");
         CheatWarp();
         if(cheats.isEnemiesDisabled) cheats.RemoveEnemies();
     }
@@ -118,6 +120,11 @@ public class GameManager : MonoBehaviour
         SceneLoaded.Invoke();
     }
 
+    public void CollectLoreNote(string noteTitle) 
+    {
+        if (UI_Handler.instance.isShowingLoreScroll) UI_Handler.instance.HideLoreNote();
+        else UI_Handler.instance.ShowLoreNote(noteTitle);
+    }
 
 
     public void SetArea(area sideA, area sideB) //Ensure the area edges are super slim, so that it's impossible to not walk through them in their entirety instantly.

@@ -79,6 +79,7 @@ public class Player : MonoBehaviour
                         public  ParticleSystem      VFX_DetectFlash;
     [SerializeField]    private ParticleSystem      VFX_DeathFlash;
     [SerializeField]    private Animator            animator;
+    [SerializeField]    private float               lockMovementInteractionLength=1.25f;
 
     #region monobehaviour integrations
 
@@ -300,7 +301,7 @@ public class Player : MonoBehaviour
     }
     #endregion
 
-    public void SetAnimationTrigger(string s) { animator.SetTrigger(s); if (s=="Using") Player.instance.LockMovementForTime(1f); }
+    public void SetAnimationTrigger(string s) { animator.SetTrigger(s); if (s=="Using") Player.instance.LockMovementForTime(lockMovementInteractionLength); }
 
     #region tracking and detection
 
