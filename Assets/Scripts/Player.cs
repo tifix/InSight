@@ -43,8 +43,7 @@ public class Player : MonoBehaviour
                             public bool isDetectionGainFrozen;
                             public bool isInSafeSpace;
                             public List<Detector> current_detectors = new();
-
-        [Header("current detection multipliers")]
+        [Space(7),Header("current detection multipliers")]
         [Range(0, 4)]       public float mulGlobal = 1;
         [Range(0, 4)]       public float mulVisualCur = 1, mulAudioCur = 1, mulSmellCur = 1;                            //current detection multipliers
         [Range(0, 4)]       public float mulVisualRun = 2f, mulVisualSneak = 0.3f;                                      //when running, detect faster, when sneaking - slower
@@ -368,6 +367,7 @@ public class Player : MonoBehaviour
     {
         if(pDetection.current_detectors.Count>1) pDetection.current_detectors.Sort(SortByDetection);
         if (pDetection.current_detectors.Count > 0) pDetection.cur_Detection = pDetection.current_detectors[0].cur_detection;
+        else pDetection.cur_Detection = 0;
 
         foreach (Detector d in enemy_holder.GetComponentsInChildren<Detector>())
         {
@@ -403,7 +403,10 @@ public class Player : MonoBehaviour
         GameManager.instance.AddDeath();
 
         //Clearing detection values on death
-        FindObjectOfType<EnemyCore>().EndEngaging();
+        foreach (var item in FindObjectsOfType<EnemyCore>())
+        {
+            item.EndEngaging();
+        }
         isMovementLocked = false;
     }
     //

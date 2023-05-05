@@ -47,6 +47,5 @@ public class E_VibeCheck : E_Behaviour
             i += Time.fixedDeltaTime/ leapDuration;
         }
         Player.instance.Die("You've been Leaped");
-
     }
 }

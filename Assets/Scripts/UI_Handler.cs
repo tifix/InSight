@@ -103,15 +103,15 @@ public class UI_Handler : MonoBehaviour
                 {
                     captionLoreScroll.text = "the Crystal Eggs 1/2";
                     textLoreScroll.text = 
-                        "The misty ridge has long been avoided by travellers. \n" +
-                        "Disruptive magical aura and tales of mighty beasts which recover \n" +
-                        "from mightiest blows in an instant kept trade slow and the valley \n" +
-                        "below quite peaceful. Some centuries ago a particularly stubborn \n" +
-                        "researcher confirmed the creatures were indeed real. He reasoned \n" +
-                        "that the creatures living at the ridge evolved to harness its \n" +
-                        "energies - empowering themself as a result. He theorised that \n" +
-                        "they pass their powers onto their stunning crystal eggs from which \n" +
-                        "their young hatched.  If one was to claim one such egg they might \n" +
+                        "The misty ridge has long been avoided by travellers. " +
+                        "Disruptive magical aura and tales of mighty beasts which recover " +
+                        "from mightiest blows in an instant kept trade slow and the valley " +
+                        "below quite peaceful. Some centuries ago a particularly stubborn " +
+                        "researcher confirmed the creatures were indeed real. He reasoned " +
+                        "that the creatures living at the ridge evolved to harness its " +
+                        "energies - empowering themself as a result. He theorised that " +
+                        "they pass their powers onto their stunning crystal eggs from which " +
+                        "their young hatched.  If one was to claim one such egg they might " +
                         "be able to harness the power themself.";
                     break; 
                 }
@@ -119,20 +119,20 @@ public class UI_Handler : MonoBehaviour
                 {
                     captionLoreScroll.text = "the Crystal Eggs 2/2";
                     textLoreScroll.text =
-                        "The theory was ignored for decades, until a strange sickness befell \n" +
-                        "the king’s only heir. No cure seemed to work. The most skilled \n" +
-                        "healers and wizards - helpless. Desperate, the king ordered \n" +
-                        "an expedition to the mountains. Two dozen greatest hunters set off \n" +
-                        "for the ridge. Two men returned, clasping one crystal egg. The next \n" +
-                        "morning, the Prince was cured. Celebrations followed and the egg was \n" +
-                        "refined into a beautiful scarlet gemstone encased in the crown \n" +
-                        "regalia. But the magic did not stop that day. The royal family \n" +
-                        "seemed untouched by sickness. Years passed and stories began \n" +
-                        "to circulate; that whoever possessed the gemstone would recover \n" +
-                        "from any illness or damage overnight. The blessing of the artefact \n" +
-                        "soon turned to a curse - a trail of blood followed it, as pretenders \n" +
-                        "claimed the fabled Norhhern Star by blade and flame. At last, it \n" +
-                        "rested in the hands and the Norhtern Star seemingly vanished from \n" +
+                        "The theory was ignored for decades, until a strange sickness befell " +
+                        "the king’s only heir. No cure seemed to work. The most skilled " +
+                        "healers and wizards - helpless. Desperate, the king ordered " +
+                        "an expedition to the mountains. Two dozen greatest hunters set off " +
+                        "for the ridge. Two men returned, clasping one crystal egg. The next " +
+                        "morning, the Prince was cured. Celebrations followed and the egg was " +
+                        "refined into a beautiful scarlet gemstone encased in the crown " +
+                        "regalia. But the magic did not stop that day. The royal family " +
+                        "seemed untouched by sickness. Years passed and stories began " +
+                        "to circulate; that whoever possessed the gemstone would recover " +
+                        "from any illness or damage overnight. The blessing of the artefact " +
+                        "soon turned to a curse - a trail of blood followed it, as pretenders " +
+                        "claimed the fabled Norhhern Star by blade and flame. At last, it " +
+                        "rested in the hands and the Norhtern Star seemingly vanished from " +
                         "the world, never to be seen again.";
                     break;
                 }
@@ -140,75 +140,80 @@ public class UI_Handler : MonoBehaviour
                 {
                     captionLoreScroll.text = "";
                     textLoreScroll.text =
-                        "Two men climb up a steep path. Technically one man climbs, another \n" +
-                        "rests on the first’s shoulders. The resting man is impossibly thin. \n" +
-                        "Their young glimmering eyes seem ill fitted for this skeletal spectre. \n" +
-                        "This is their reward for disobeying their family - within a week, \n" +
-                        "this curse will turn them into a mindless zombie. The only cure you \n" +
-                        "can turn to is the mythical crystal eggs of the beasts of misty ridge. \n" +
-                        "Right, steal the crystal eggs, save your roommate from certain doom.\n" +
-                        "Steal more and live happily ever after";
+                        "Two men climb up a steep path. Technically one man climbs, " +
+                        "another rests on the first’s shoulders. The resting man is " +
+                        "impossibly thin. Their young glimmering eyes seem ill fitted " +
+                        "for this skeletal spectre. This is their reward for " +
+                        "disobeying their family - within a week, this curse will " +
+                        "turn them into a mindless zombie. The only cure you can " +
+                        "turn to is the mythical crystal eggs of the beasts of misty " +
+                        "ridge. Right, steal the crystal eggs, save your roommate " +
+                        "from certain doom. Steal more and live happily ever after.";
                     break;
                 }
             case "necrotic":
                 {
                     captionLoreScroll.text = "Iris's Diary 05/05/715";
                     textLoreScroll.text =
-                        "4 days ago He lost His sense of taste and smell. Since then, He lost \n" +
-                        "a third of his weight. I was terrified. Then confused. Then I \n" +
-                        "remembered my studies. Necrotic Decay. He will turn into a living \n" +
-                        "corpse in 10 days. Whenever I found the curse was mentioned, there \n" +
-                        "was one cure. Always one. Necrotic decay is material - bound. To halt \n" +
-                        "the symptoms He must constantly touch the same gemstone that was \n" +
-                        "used when the curse was cast. The only cure to stop this nightmare \n" +
-                        "is encased in His fathe'r rapier. The northern star - The family \n" +
-                        "heirloom. No one can steal it, let alone hold on to it so the curse \n" +
-                        "does not resurface. He would rather die than return home anyways. \n" +
-                        "And then it hit me - this gemstone was the only one in the hands of \n" +
+                        "4 days ago He lost His sense of taste and smell. Since then, He lost " +
+                        "a third of his weight. I was terrified. Then confused. Then I " +
+                        "remembered my studies. Necrotic Decay. He will turn into a living " +
+                        "corpse in 10 days. Whenever I found the curse was mentioned, there " +
+                        "was one cure. Always one. Necrotic decay is material - bound. To halt " +
+                        "the symptoms He must constantly touch the same gemstone that was " +
+                        "used when the curse was cast. The only cure to stop this nightmare " +
+                        "is encased in His fathe'r rapier. The northern star - The family " +
+                        "heirloom. No one can steal it, let alone hold on to it so the curse " +
+                        "does not resurface. He would rather die than return home anyways. " +
+                        "And then it hit me - this gemstone was the only one in the hands of " +
                         "man, but not the only one in the world.";
                     break;
                 }
-            case "letter 1":
+            case "letter1":
                 {
                     captionLoreScroll.text = "Letter to Mar (fragment)";
                     textLoreScroll.text =
-                        "...I am glad, that despite this terrible \n" +
-                        "distance my words can help You find the strength to keep going. \n" +
-                        "To keep living and to keep trying to get out of the hell that is \n" +
-                        "that future. Every night I wonder what the odds of us finding each \n" +
-                        "other were. Every night I am in disbelief that you would want me, \n" +
-                        "just as much as I crave you. It is not my place to ask how, or why...\n" +
-                        "But I will act upon this fate. I will make the most... We will make \n" +
-                        "the most of it. Soon. The day draws near." +
+                        "...I am glad, that despite this terrible " +
+                        "distance my words can help You find the strength to keep " +
+                        "going. To keep living and to keep trying to get out of the " +
+                        "hell that is that future. Every night I wonder what the " +
+                        "odds of us finding each other were. Every night I am in " +
+                        "disbelief that you would want me, just as much as I crave " +
+                        "you. It is not my place to ask how, or why... But I will " +
+                        "act upon this fate. I will make the most... We will make " +
+                        "the most of it. Soon. The day draws near. \n" +
                         "The anticipation is Killing me - signed, Iris";
                     break;
                 }
-            case "letter 2":
+            case "letter2":
                 {
                     captionLoreScroll.text = "Letter to Mar (fragment)";
                     textLoreScroll.text =
-                        "...Yet again they forced you to do it?  \n" +
-                        "How can they keep getting away with it? No matter. All of that \n" +
-                        "will not matter soon. I found myself daydreaming about You \n" +
-                        "wondering through my orchard. It is so surreal that I will be able \n" +
-                        "to kiss you after what felt like eternity. I will kiss you by the\n" +
-                        "apples. I will kiss you by the pond, I will kiss You awake in the \n" +
-                        "morning with soft sunlight on your soft lips. I will make up \n" +
-                        "for the time we have lost to them by loving you thrice as much \n" +
-                        "as anyone would think possible. \n" +
+                        "...Yet again they forced you to do it?  " +
+                        "How can they keep getting away with it? No matter. " +
+                        "All of that will not matter soon. I found myself " +
+                        "daydreaming about You wondering through my orchard. " +
+                        "It is so surreal that I will be able to kiss you after " +
+                        "what felt like eternity. I will kiss you by the apples. " +
+                        "I will kiss you by the pond, I will kiss You awake in the " +
+                        "morning with soft sunlight on your soft lips. I will make up " +
+                        "for the time we have lost to them by loving you thrice as " +
+                        "much as anyone would think possible. \n" +
                         "- signed, Iris";
                     break;
                 }
-            case "letter 3":
+            case "letter3":
                 {
                     captionLoreScroll.text = "Letter to Mar (fragment)";
                     textLoreScroll.text =
-                        "Oh my, I could not see myself woodworking. These arms are not made\n" +
-                        "for chopping trees. Planting them is much more to my liking. \n" +
-                        "But the image of you swinging it is... a pleasant one. Mayhaps \n" +
-                        "if you hurt Yourself out there I could tend to You..?  All that \n" +
-                        "strength and I would still have you helpless. All for your health,\n" +
-                        "naturally. - signed, Iris\n" +
+                        "Oh my, I could not see myself woodworking. " +
+                        "These arms are not made for chopping trees. " +
+                        "Planting them is much more to my liking. " +
+                        "But the image of you swinging it is... " +
+                        "a pleasant one. Mayhaps if you hurt Yourself " +
+                        "out there I could tend to You..?  All that " +
+                        "strength and I would still have you helpless. " +
+                        "All for your health, naturally. - signed, Iris \n" +
                         "P.S. Did I mention I make tremendous healing stew?";
                     break;
                 }
