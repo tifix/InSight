@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
     //
     public Light SunLight;
     public UnityEvent SceneLoaded;
-
+    public AnimationCurve noiseFalloff;
     //
     [Header("game balancing parameters")]
     //

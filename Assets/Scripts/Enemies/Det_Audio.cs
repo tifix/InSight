@@ -63,10 +63,13 @@ public class Det_Audio : Detector
             float d2 = (s2.AudioObject.position - transform.position).magnitude;
 
             //logarythmic volume falloff 
-            d1 = Mathf.Log(d1, 0.1f) + 1.7f;
-            d2 = Mathf.Log(d2, 0.1f) + 1.7f;
-            s1.volumeRelative =Mathf.Clamp(s1.volumeAbsolute * d1, 0,20)  ;
-            s2.volumeRelative = Mathf.Clamp(s2.volumeAbsolute * d2, 0, 20);
+            //d1 = Mathf.Log(d1, 0.1f) + 1.7f;
+            //d2 = Mathf.Log(d2, 0.1f) + 1.7f;
+            d1 = GameManager.instance.noiseFalloff.Evaluate(d1); 
+            d2 = GameManager.instance.noiseFalloff.Evaluate(d2);
+            //d2 = Mathf.Log(d2, 0.1f) + 1.7f;
+            s1.volumeRelative = Mathf.Clamp(s1.volumeAbsolute*d1, 0, 50);     //Mathf.Clamp(s1.volumeAbsolute * d1, 0,20);
+            s2.volumeRelative = Mathf.Clamp(s2.volumeAbsolute*d2, 0, 50);     //Mathf.Clamp(s2.volumeAbsolute * d2, 0, 20);
 
             return (s2.volumeRelative).CompareTo(s1.volumeRelative);
 
@@ -86,11 +89,24 @@ public class Det_Audio : Detector
                     detection_state = det_states.suspected;
                     
                     //Comparative volume system- if player is only a bit louder than the environment, then the detection increaase is slower
-                    noiseDif = Mathf.Clamp( AudioEntities[0].volumeRelative - AudioEntities[1].volumeRelative,0,1.5f);
+                    noiseDif = Mathf.Clamp( AudioEntities[0].volumeRelative - AudioEntities[1].volumeRelative,0,2f); //0,1.5f);
+
+                    //a = 1, b=.5, then I'm gaining .5 x 10
+                    //a = 1, b=.8, then I'm gaining .2 x 10
 
                     detGainPerStep = 0;
-                    
-                    if (isUsingComparativeVolume) detGainPerStep = AudioEntities[0].volumeRelative * detGain * noiseDif * Player.instance.pDetection.mulAudioCur;
+
+                    if (isUsingComparativeVolume) 
+                    {
+                        detGainPerStep = AudioEntities[0].volumeRelative + noiseDif/1.5f;
+                        detGainPerStep *= detGain * Player.instance.pDetection.mulAudioCur;
+                        if (Player.instance.isInWater) 
+                        {
+                            detGainPerStep += 5;
+                            detGainPerStep *= Player.instance.pDetection.mulAudioWater; 
+                        }
+                        detGainPerStep = Mathf.Clamp(detGainPerStep, 0, 20);
+                    } //noiseDif *
                     else detGainPerStep = AudioEntities[0].volumeRelative * detGain;
 
                     if (detGainPerStep > 33) Debug.Log("making extreme noise "+ detGainPerStep);

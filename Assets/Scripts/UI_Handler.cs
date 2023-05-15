@@ -153,7 +153,7 @@ public class UI_Handler : MonoBehaviour
                 }
             case "necrotic":
                 {
-                    captionLoreScroll.text = "Iris's Diary 05/05/715";
+                    captionLoreScroll.text = "Iris's Diary 05/05/712";
                     textLoreScroll.text =
                         "4 days ago He lost His sense of taste and smell. Since then, He lost " +
                         "a third of his weight. I was terrified. Then confused. Then I " +
@@ -206,7 +206,7 @@ public class UI_Handler : MonoBehaviour
                 {
                     captionLoreScroll.text = "Letter to Mar (fragment)";
                     textLoreScroll.text =
-                        "Oh my, I could not see myself woodworking. " +
+                        "...Oh my, I could not see myself woodworking. " +
                         "These arms are not made for chopping trees. " +
                         "Planting them is much more to my liking. " +
                         "But the image of you swinging it is... " +
@@ -217,9 +217,44 @@ public class UI_Handler : MonoBehaviour
                         "P.S. Did I mention I make tremendous healing stew?";
                     break;
                 }
-
+            case "letter4":
+                {
+                    captionLoreScroll.text = "Letter to Iris (fragment)";
+                    textLoreScroll.text =
+                        "...Patience, patience... \n" +
+                        "This is such a struggle; I know wonderful times " +
+                        "are just around the corner. I know I will " +
+                        "have you all for myself so... so soon, but even " +
+                        "though it is such a wonderful prospect, the " +
+                        "wait is utterly unbearable. With every day" +
+                        "I feel like you invade my mind even more. " +
+                        "Frankly I feel like I am going mad. \n" +
+                        "P.S. I need my cure. I need you. \n" +
+                        "-signed Mar";
+                    break;
+                }
+            case "beasts":
+                {
+                    captionLoreScroll.text = "Research Diary 08/10/325";
+                    textLoreScroll.text =
+                        "... though the low level of light in the cavern " +
+                        "made the creatures practically blind, their hearing " +
+                        "became all the sharper. I made it this far by using " +
+                        "the loud waterfalls to conceal my footsteps, but I am " +
+                        "unsure whether that will remain a possibility further in. " +
+                        "Caution is advised; I stepped into a puddle once and the" +
+                        "noice echoed across half the cave. My blood nearly froze." +
+                        "I have caught glimpses of their nests, but to gather any " +
+                        "samples would require me to pass right by to the creatures...";
+                    break;
+                }
             default:
-                break;
+                {
+                    captionLoreScroll.text = "Soggy Paper";
+                    textLoreScroll.text = "*you can't make out the writing as the ink got warped by water*";
+                    break;
+                }
+                
         }
 
 

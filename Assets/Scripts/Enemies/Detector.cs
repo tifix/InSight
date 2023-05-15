@@ -107,7 +107,7 @@ public class Detector : MonoBehaviour
             if (detection_state == det_states.tracked)
             {
                 if (remainingTrackingTime > Mathf.Epsilon) remainingTrackingTime -= Time.fixedDeltaTime; //count down time for tracking
-                else { remainingTrackingTime = 0; detection_state = det_states.undetected; GiveUpTracking.Invoke();  }   //Stop tracking after time expires
+                else { remainingTrackingTime = 0; detection_state = det_states.undetected; cur_detection = 0; GiveUpTracking.Invoke();  }   //Stop tracking after time expires
             }
         }
     }

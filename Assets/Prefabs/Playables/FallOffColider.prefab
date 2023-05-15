@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 64018897513428483}
   - component: {fileID: 6647338489811317075}
   - component: {fileID: 8585390904398163847}
-  m_Layer: 11
+  m_Layer: 0
   m_Name: FallOffColider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33,7 +33,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 45, z: 0}
 --- !u!65 &7818648089812281052
 BoxCollider:
@@ -60,6 +60,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42662645ee8ef3c429eb7a070cb3acb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  viableUsers:
+    serializedVersion: 2
+    m_Bits: 0
+  isSingleUse: 0
   Entered:
     m_PersistentCalls:
       m_Calls:
@@ -93,7 +97,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 772512540371818671}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1

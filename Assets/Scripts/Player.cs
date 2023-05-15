@@ -49,6 +49,8 @@ public class Player : MonoBehaviour
         [Range(0, 4)]       public float mulVisualRun = 2f, mulVisualSneak = 0.3f;                                      //when running, detect faster, when sneaking - slower
         [Range(0, 4)]       public float mulAudioStill = 0.2f, mulAudioSneak = 1f, mulAudioWalk = 2f, mulAudioRun = 3.5f, mulAudioWater=1.5f;                  //when running, detect faster, when sneaking- slower, when still- just barely
         [Range(0, 4)]       public float intAudioSneak = 0.75f, intAudioWalk = 0.5455f, intAudioRun = 0.4286f;          //8-BPM  110BPM 140BPM
+        [Range(0, 4)]       public float stepMaxLoudness = 20, stepWaterAdd = 5;                                        //clamps each step to max out at this value, puddle steps are this much louder as a baseline
+        
         [Range(0, 4)]       public float intervalTrackSpawning=1f;
         [Range(0, 4)]       public float stepInterval = 0.05f, stepLastTime = 0;
         [HideInInspector]   public UnityEvent StepTaken=new UnityEvent();
@@ -71,7 +73,6 @@ public class Player : MonoBehaviour
                         public  AudioSource         stepsSource;
                         public  Transform           enemy_holder;
                         public  Transform           track_holder;
-                        public  Transform           last_checkpoint;
     [SerializeField]    private Transform           mesh_child;
     [SerializeField]    private Transform           head_child;
 
