@@ -77,14 +77,16 @@ public class GameManager : MonoBehaviour
     //Call whenever picking up a new note
     public void AddNewNote()
     {
+        Debug.Log("Notes++");
         cur_data.totalNotes++;
-        UI_Handler.instance.counter_Notes.text = cur_data.totalNotes + "/9";
+        UI_Handler.instance.counter_Notes.text = cur_data.totalNotes + "/10";
         UI_Handler.SetAnimatorTrigger("CountNote");
     }
 
     //Call whenever a new objective is callected to show overall player progress;
     public void AddNewObjective(int number)
     {
+        Debug.Log("Objective++");
         cur_data.totalObjectives += number;
         UI_Handler.instance.counter_Objectives.text = cur_data.totalObjectives + "/8";
         UI_Handler.SetAnimatorTrigger("CountObjectives");
@@ -131,10 +133,10 @@ public class GameManager : MonoBehaviour
         SceneLoaded.Invoke();
     }
 
-    public void CollectLoreNote(string noteTitle) 
+    public void CollectLoreNote(string noteTitle)
     {
         if (UI_Handler.instance.isShowingLoreScroll) UI_Handler.instance.HideLoreNote();
-        else UI_Handler.instance.ShowLoreNote(noteTitle);
+        else {UI_Handler.instance.ShowLoreNote(noteTitle); }
     }
     
 

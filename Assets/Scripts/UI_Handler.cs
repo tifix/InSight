@@ -95,8 +95,12 @@ public class UI_Handler : MonoBehaviour
 
     public void ShowLoreNote(string noteTitle) //Display appropriate lore text. Logic invoked in GameManager.
     {
-        isShowingLoreScroll = true;
-        GetComponent<Animator>().SetTrigger("ScrollPickup");
+        if (!isShowingLoreScroll)
+        {
+            isShowingLoreScroll = true;
+            GetComponent<Animator>().SetTrigger("ScrollPickup");
+        }
+        else return;
 
         switch (noteTitle)
         {
@@ -105,14 +109,14 @@ public class UI_Handler : MonoBehaviour
                     captionLoreScroll.text = "the Crystal Eggs 1/2";
                     textLoreScroll.text = 
                         "The misty ridge has long been avoided by travellers. " +
-                        "Disruptive magical aura and tales of mighty beasts which recover " +
-                        "from mightiest blows in an instant kept trade slow and the valley " +
-                        "below quite peaceful. Some centuries ago a particularly stubborn " +
+                        "Disruptive magical aura and tales of mighty beasts, which recover " +
+                        "from mightiest blows in an instant, kept trade slow and the valley " +
+                        "below quite peaceful. Some centuries ago, a particularly stubborn " +
                         "researcher confirmed the creatures were indeed real. He reasoned " +
                         "that the creatures living at the ridge evolved to harness its " +
                         "energies - empowering themself as a result. He theorised that " +
-                        "they pass their powers onto their stunning crystal eggs from which " +
-                        "their young hatched.  If one was to claim one such egg they might " +
+                        "they pass their powers onto their stunning crystal eggs, from which " +
+                        "their young hatched.  If one was to claim one such egg, they might " +
                         "be able to harness the power themself.";
                     break; 
                 }
@@ -125,10 +129,10 @@ public class UI_Handler : MonoBehaviour
                         "healers and wizards - helpless. Desperate, the king ordered " +
                         "an expedition to the mountains. Two dozen greatest hunters set off " +
                         "for the ridge. Two men returned, clasping one crystal egg. The next " +
-                        "morning, the Prince was cured. Celebrations followed and the egg was " +
+                        "morning, the Prince was cured. Celebrations followed, and the egg was " +
                         "refined into a beautiful scarlet gemstone encased in the crown " +
                         "regalia. But the magic did not stop that day. The royal family " +
-                        "seemed untouched by sickness. Years passed and stories began " +
+                        "seemed untouched by sickness. Years passed, and stories began " +
                         "to circulate; that whoever possessed the gemstone would recover " +
                         "from any illness or damage overnight. The blessing of the artefact " +
                         "soon turned to a curse - a trail of blood followed it, as pretenders " +
@@ -143,7 +147,7 @@ public class UI_Handler : MonoBehaviour
                     textLoreScroll.text =
                         "Two men climb up a steep path. Technically one man climbs, " +
                         "another rests on the first’s shoulders. The resting man is " +
-                        "impossibly thin. Their young glimmering eyes seem ill fitted " +
+                        "impossibly thin. Their young, glimmering eyes seem ill fitted " +
                         "for this skeletal spectre. This is their reward for " +
                         "disobeying their family - within a week, this curse will " +
                         "turn them into a mindless zombie. The only cure you can " +
@@ -157,17 +161,32 @@ public class UI_Handler : MonoBehaviour
                     captionLoreScroll.text = "Iris's Diary 05/05/712";
                     textLoreScroll.text =
                         "4 days ago He lost His sense of taste and smell. Since then, He lost " +
-                        "a third of his weight. I was terrified. Then confused. Then I " +
-                        "remembered my studies. Necrotic Decay. He will turn into a living " +
+                        "a third of his weight. I was terrified, then confused. Then I " +
+                        "remembered my studies: Necrotic Decay. He will turn into a living " +
                         "corpse in 10 days. Whenever I found the curse was mentioned, there " +
-                        "was one cure. Always one. Necrotic decay is material - bound. To halt " +
-                        "the symptoms He must constantly touch the same gemstone that was " +
+                        "was one cure. Always one. Necrotic decay is material-bound. To halt " +
+                        "the symptoms, He must constantly touch the same gemstone that was " +
                         "used when the curse was cast. The only cure to stop this nightmare " +
-                        "is encased in His fathe'r rapier. The northern star - The family " +
-                        "heirloom. No one can steal it, let alone hold on to it so the curse " +
+                        "is encased in His fathe'r rapier - The northern star, the family " +
+                        "heirloom. No one can steal it, let alone hold on to it, so the curse " +
                         "does not resurface. He would rather die than return home anyways. " +
                         "And then it hit me - this gemstone was the only one in the hands of " +
                         "man, but not the only one in the world.";
+                    break;
+                }
+            case "necrotic2":
+                {
+                    captionLoreScroll.text = "Iris's Diary 08/05/712";
+                    textLoreScroll.text =
+                        "I have returned to the camp with the egg. I somehow survived," +
+                        "though these things were everywhere. And as I ran out to Mar," +
+                        " told Him everything will be okay... And then it was not. " +
+                        "I was confused. Then I was furious. But I figured it out now. " +
+                        "Our egg was fertilised; there was a creature already developing" +
+                        " within it. That creature drained all the magic into itself." +
+                        " So we need... I need to find one which is empty. They are... " +
+                        "tricky to differentiate, especially in the dark panic of the cave," +
+                        " but if bring more of them back here, one MUST be suitable. ";
                     break;
                 }
             case "letter1":
@@ -262,6 +281,7 @@ public class UI_Handler : MonoBehaviour
     }
     public void HideLoreNote()
     {
+        Debug.Log("Hiding");
         isShowingLoreScroll = false;
         GetComponent<Animator>().SetTrigger("ScrollClose");
     }

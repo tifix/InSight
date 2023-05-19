@@ -71,8 +71,10 @@ public class EnemyCore : MonoBehaviour
         Debug.Log(name + " disengaging. Detection going to 0");
         detector.currentlyEngaging = false;
         detector.cur_detection = 0; UI_Handler.instance.SetDetectionColorSus();                 //resetting the detection bar appropriatelly
-        initPosition = transform.position;
+        //initPosition = transform.position;
         detector.remainingTrackingTime = 0;
+        detector.agent.Warp(initPosition);
+        detector.agent.enabled = true;
         SwitchToIdle();
     }
 

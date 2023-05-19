@@ -8,6 +8,8 @@ public class InvokeOnTrigger : MonoBehaviour
 {
     [SerializeField] private LayerMask viableUsers;
     [SerializeField] private bool isSingleUse;
+    [SerializeField] private bool destroyOnEnter;
+    [SerializeField] private bool destroyOnExit;
     [SerializeField] private UnityEvent Entered=null;
     [SerializeField] private UnityEvent Left=null;
 
@@ -16,7 +18,7 @@ public class InvokeOnTrigger : MonoBehaviour
         if ((viableUsers & 1 << other.gameObject.layer) == 1 << other.gameObject.layer)
         {
             Entered.Invoke();
-            if (isSingleUse) Destroy(this);
+            if (isSingleUse && destroyOnEnter)  Destroy(this);
         }
     }
 
@@ -25,7 +27,7 @@ public class InvokeOnTrigger : MonoBehaviour
         if ((viableUsers & 1 << other.gameObject.layer) == 1 << other.gameObject.layer)
         {
             Left.Invoke();
-            if (isSingleUse) Destroy(this);
+            if (isSingleUse && destroyOnExit) Destroy(this);
         }
     }
 }
