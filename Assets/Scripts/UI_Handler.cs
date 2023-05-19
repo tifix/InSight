@@ -17,6 +17,7 @@ public class UI_Handler : MonoBehaviour
     //public Text counterDetection, counterKills, counterObjectives;
     public Text counterVictoryDetection, counterVictoryTime, counterVictoryObjectives;
     public Text textLoreScroll, captionLoreScroll;
+    public Text counter_Objectives, counter_Notes;
     public Slider detection_a, detection_b, volume;
     [SerializeField] GameObject directionArrow, DirectionalGizmo;             //direction of spotting enemy arrow
     [SerializeField] AudioMixer audioMixer;
@@ -29,10 +30,10 @@ public class UI_Handler : MonoBehaviour
     [SerializeField] Transform DetectingEnemy;
     public GameObject sunReal, sunCave;
     [Range(-3,3)]public float Brightness=1;
-    public Volume caveVolume;
+    public Volume caveVolume;    
     public bool isShowingLoreScroll = false;
-
-
+    
+    
     void Start()
     {
         if (UI_pause.activeInHierarchy) UI_pause.SetActive(false);//GameManager.instance.TogglePause();

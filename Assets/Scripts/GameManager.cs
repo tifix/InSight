@@ -41,6 +41,7 @@ public class GameManager : MonoBehaviour
         public int totalDeaths = 0;
         public int totalDetections = 0;
         public int totalObjectives = 0;
+        public int totalNotes = 0;
         [Tooltip("should show as 0 until Victory Screen is shown")] public float totalGameTime = 0;
     }
 
@@ -73,10 +74,20 @@ public class GameManager : MonoBehaviour
 
     #region GameData save interfacing
 
-    public void AddObjective()
+    //Call whenever picking up a new note
+    public void AddNewNote()
     {
-        Debug.Log("objective++");
-        cur_data.totalObjectives++;
+        cur_data.totalNotes++;
+        UI_Handler.instance.counter_Notes.text = cur_data.totalNotes + "/9";
+        UI_Handler.SetAnimatorTrigger("CountNote");
+    }
+
+    //Call whenever a new objective is callected to show overall player progress;
+    public void AddNewObjective(int number)
+    {
+        cur_data.totalObjectives += number;
+        UI_Handler.instance.counter_Objectives.text = cur_data.totalObjectives + "/8";
+        UI_Handler.SetAnimatorTrigger("CountObjectives");
     }
     public void AddDetection()
     {
@@ -125,6 +136,7 @@ public class GameManager : MonoBehaviour
         if (UI_Handler.instance.isShowingLoreScroll) UI_Handler.instance.HideLoreNote();
         else UI_Handler.instance.ShowLoreNote(noteTitle);
     }
+    
 
 
     public void SetArea(area sideA, area sideB) //Ensure the area edges are super slim, so that it's impossible to not walk through them in their entirety instantly.
