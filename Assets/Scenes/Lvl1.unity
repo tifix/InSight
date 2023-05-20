@@ -20210,6 +20210,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
+    - target: {fileID: 4219545594310894876, guid: 3f2634ad758988545a903c5448f4e385, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 4951302298503188072, guid: 3f2634ad758988545a903c5448f4e385, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -20237,6 +20241,10 @@ PrefabInstance:
     - target: {fileID: 7343835629025259293, guid: 3f2634ad758988545a903c5448f4e385, type: 3}
       propertyPath: m_Layer
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7343835629025259293, guid: 3f2634ad758988545a903c5448f4e385, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 8758600732600140880, guid: 3f2634ad758988545a903c5448f4e385, type: 3}
       propertyPath: m_Layer
@@ -47022,11 +47030,11 @@ GameObject:
   - component: {fileID: 1076899038}
   - component: {fileID: 1076899037}
   m_Layer: 0
-  m_Name: Dept_Shortcut (1)
+  m_Name: Dept_Couldron
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1076899036
 Transform:
@@ -47530,7 +47538,7 @@ MonoBehaviour:
   showNormalGizmo: 1
   randomizeRotationAroundPrimary: 0
   showRotationlGizmo: 0
-  debugPosition: {x: 62.921047, y: 5.555705, z: -28.384928}
+  debugPosition: {x: 58.59389, y: 7.701461, z: -28.000328}
   SnapMaxDistance: 5
 --- !u!1 &1090816689
 GameObject:
@@ -47699,6 +47707,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 5294961661878321112}
     m_Modifications:
+    - target: {fileID: -9167046347407033237, guid: 6165b06c4d5918144ad934d5d71a1afe, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6165b06c4d5918144ad934d5d71a1afe, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -47755,6 +47767,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 809a8c44582097c4ab9a141ba6c305ed, type: 2}
+    - target: {fileID: -3133023975651065968, guid: 6165b06c4d5918144ad934d5d71a1afe, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: -367090054849271784, guid: 6165b06c4d5918144ad934d5d71a1afe, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -47763,10 +47779,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Grot_Depths
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6165b06c4d5918144ad934d5d71a1afe, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 1441154764475985015, guid: 6165b06c4d5918144ad934d5d71a1afe, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 809a8c44582097c4ab9a141ba6c305ed, type: 2}
+    - target: {fileID: 2713723114758886335, guid: 6165b06c4d5918144ad934d5d71a1afe, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 2742503629238366368, guid: 6165b06c4d5918144ad934d5d71a1afe, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 4887559528425551138, guid: 6165b06c4d5918144ad934d5d71a1afe, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6165b06c4d5918144ad934d5d71a1afe, type: 3}
